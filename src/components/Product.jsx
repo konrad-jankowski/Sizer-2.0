@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Rating from "./Rating";
 
 const Product = ({ item }) => {
@@ -7,7 +8,7 @@ const Product = ({ item }) => {
       <img className="w-[235px] h-[235px]" src={item.images[0]} alt="" />
       <div className="flex justify-between mt-2">
         <div>
-          <h3>NIKE AIR MAX 95</h3>
+          <h3>{item.model.substring(0, 17)}</h3>
           <h3>{/* <Rating rating={item.rating} /> */}</h3>
           <h4 className="text-sm">
             {item.price} ZŁ{" "}
@@ -24,6 +25,9 @@ const Product = ({ item }) => {
           />
         </div>
       </div>
+      <button>
+        <Link to={`${item.id}`}>Show more</Link>
+      </button>
     </div>
   );
 };

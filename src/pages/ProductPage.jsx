@@ -1,5 +1,6 @@
 import React from "react";
 import { MdLocationOn } from "react-icons/md";
+import { SlArrowRight } from "react-icons/sl";
 import Button_buy from "../components/Button_buy";
 import Button_favorite from "../components/Button_favorite";
 import Slider from "../components/Slider";
@@ -10,16 +11,16 @@ import ProcentageCalculator from "../components/ProcentageCalculator";
 import Description from "../components/Description";
 
 const ProductPage = () => {
-  // console.log(shoes[4].description.map((item) => item.main));
-
   return (
     <>
       {shoes.map((item) => {
         return (
-          <div className="flex mx-[8%] mt-10 mb-20 ">
+          <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>
             <div className="flex-1   mr-20">
-              <p className="text-xs mt-4 mb-10">
-                SIZEER › SNEAKERSY › {item.model}{" "}
+              <p className="mt-4 mb-10 flex gap-2 items-center text-sm font-medium  ">
+                SIZEER <SlArrowRight fill="#f4811f" /> SNEAKERSY{" "}
+                <SlArrowRight fill="#f4811f" />{" "}
+                <span className="text-[#f4811f]">{item.model}</span>{" "}
               </p>
               <Slider item={item} />
             </div>

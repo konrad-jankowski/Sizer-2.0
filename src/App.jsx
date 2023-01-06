@@ -2,15 +2,18 @@ import Main_grid from "./components/Main_grid";
 import Navbar from "./components/Navbar";
 import banner from "./images/SALE_banner.jpg";
 import ProductPage from "./pages/ProductPage";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SingleProduct from "./components/SingleProduct";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <img src={banner} alt="" />
-      {/* <Main_grid /> */}
-      <ProductPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main_grid />} />
+        {/* <Route path="/:model" element={<ProductPage />} /> */}
+        <Route path="/:id" element={<SingleProduct />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

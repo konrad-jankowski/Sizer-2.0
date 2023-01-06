@@ -6,7 +6,7 @@ import { BsSearch } from "react-icons/bs";
 
 const Navbar = () => {
   return (
-    <nav className="essa flex sticky top-0 w-full py-5 px-[9%] justify-between items-center bg-gray-100 ">
+    <nav className="flex  w-full py-5 px-[9%] justify-between items-center bg-gray-100 mb-20 ">
       <div className="">
         <img
           className="w-[160px] h-[50px] object-cover"

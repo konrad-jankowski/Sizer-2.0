@@ -9,7 +9,7 @@ const Description_pricing = () => {
   };
 
   return (
-    <p className="py-4 text-sm font-semibold border-b-[1.5px] leading-6 ">
+    <div className="py-4 text-sm font-semibold border-b-[1.5px] leading-6 ">
       {toggle ? (
         <div className="font-medium">
           <div
@@ -41,7 +41,7 @@ const Description_pricing = () => {
           <AiOutlinePlus /> WARUNKI PŁATNOŚCI I DOSTAWY
         </div>
       )}
-    </p>
+    </div>
   );
 };
 

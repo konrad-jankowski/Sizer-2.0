@@ -9,7 +9,7 @@ const Description_desciption = ({ item }) => {
   };
 
   return (
-    <p className="py-4 text-sm font-semibold border-y-[1.5px] leading-6">
+    <div className="py-4 text-sm font-semibold border-y-[1.5px] leading-6">
       {toggle ? (
         <div className="font-medium">
           <div
@@ -36,7 +36,7 @@ const Description_desciption = ({ item }) => {
           <AiOutlinePlus /> OPIS PRODUKTU
         </div>
       )}
-    </p>
+    </div>
   );
 };
 

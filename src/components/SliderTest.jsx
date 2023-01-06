@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 
-const slider = ({ item }) => {
-  const [img, setImg] = useState(item[0]);
+const SliderTest = ({ essa }) => {
+  const [img, setImg] = useState(essa[0]);
 
   const hoverHandler = (image, i) => {
     setImg(image);
     refs.current[i].classList.add("active");
-    for (var j = 0; j < item?.length; j++) {
+    for (var j = 0; j < essa?.length; j++) {
       if (i !== j) {
         refs.current[j].classList.remove("active");
       }
@@ -26,7 +26,7 @@ const slider = ({ item }) => {
         <img src={img} alt="" />
       </div>
       <div className="flex justify-center gap-2 mt-6">
-        {item.map((image, i) => (
+        {essa?.map((image, i) => (
           <div
             className={i == 0 ? "img_wrap active" : "img_wrap"}
             key={i}
@@ -40,4 +40,4 @@ const slider = ({ item }) => {
     </div>
   );
 };
-export default slider;
+export default SliderTest;

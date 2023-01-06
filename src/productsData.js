@@ -1,6 +1,6 @@
 const shoes = [
   {
-    id: "1",
+    id: "0",
     companyUrl: "https://sklep.sizeer.com/images/loga_marek/Nike_karta.png",
     model: "NIKE AIR FORCE 1 ",
     category: "SNEAKERSY",
