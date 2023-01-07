@@ -10,7 +10,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main_grid />} />
-        {/* <Route path="/:model" element={<ProductPage />} /> */}
         <Route path="/:id" element={<SingleProduct />} />
       </Routes>
     </BrowserRouter>

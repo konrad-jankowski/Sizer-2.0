@@ -22,7 +22,7 @@ const shoes = [
     ],
   },
   {
-    id: "2",
+    id: "1",
     companyUrl: "https://sklep.sizeer.com/images/loga_marek/Nike_karta.png",
     model: "NIKE AIR MAX 90",
     category: "SNEAKERSY",
@@ -39,7 +39,7 @@ const shoes = [
     ],
   },
   {
-    id: "3",
+    id: "2",
     companyUrl: "https://sklep.sizeer.com/images/loga_marek/Nike_karta.png",
     category: "SNEAKERSY",
     model: "NIKE WAFFLE ONE",
@@ -54,7 +54,7 @@ const shoes = [
     ],
   },
   {
-    id: "4",
+    id: "3",
     companyUrl:
       "https://creativeheads.pl/wp-content/uploads/2019/10/logo-adidas-koniczyna.png",
     model: "ADIDAS SUPERSTAR VEGAN",
@@ -71,7 +71,7 @@ const shoes = [
     ],
   },
   {
-    id: "5",
+    id: "4",
     companyUrl:
       "https://creativeheads.pl/wp-content/uploads/2019/10/logo-adidas-koniczyna.png",
     model: "ADIDAS NMD_R1",
@@ -91,6 +91,74 @@ const shoes = [
       "Wierzch: materiał tekstylny (w tym co najmniej 50% Parley Ocean Plastic i 50% poliestru z recyklingu)",
       "Wyściółka: materiał tekstylny",
       "Podeszwa: BOOST, guma",
+    ],
+  },
+  {
+    id: "5",
+    companyUrl:
+      "https://cdn.shopify.com/s/files/1/0513/0174/4799/files/etnies-social_e28f1be2-f085-4efa-a263-b4afeea4f623_1200x.png?v=1624366480",
+    model: "ETNIES WINDROW",
+    category: "SNEAKERSY",
+    price: 259.99,
+    rating: 4.8,
+    ratingUsers: 3,
+    discountFrom: 369.99,
+    sizes: [41.5, 42, 43, 45.5, 46],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/sczb3y7m/etnies-windrow-meskie-sneakersy-czarny-4101000551970.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/ir35qvrv/etnies-windrow-meskie-sneakersy-czarny-4101000551970_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/ijqzow1s/etnies-windrow-meskie-sneakersy-czarny-4101000551970_3.jpg",
+    ],
+    description: [
+      "Marka Etnies wie, co nosi się na mieście! Brand uwielbiany przez skaterów tym razem proponuje męski model Windrow w czarno-złotej odsłonie. Wyjdziesz w nim na ulice, do pracy, a popołudniem wyskoczysz pośmigać na desce! Dopracowane w każdym calu, mocne cholewki zapewniają świetną osłonę stóp, a sznurowanie pozwala uzyskać indywidualne dopasowanie. Dzięki wewnętrznej wkładce z pianki EVA każdy krok jest przyjemnie amortyzowany. Istotnym elementem jest też oczywiście podeszwa - dzięki przyczepnej gumie zachowasz właściwą trakcję na różnych podłożach. Naszywka z symbolem Ziemi na języku podkreśla, że model jest przyjazny środowisku, bo wykonany w znacznej mierze z materiałów organicznych i pochodzących z recyklingu.",
+      "Wierzch: skóra syntetyczna zamszowa z recyklingu, PU z recyklingu, bawełna organiczna",
+      "Wyściółka: materiał tekstylny",
+      "Wkładka: pianka EVA Foam Lite 2",
+    ],
+  },
+  {
+    id: "6",
+    companyUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Converse_logo.svg.png",
+    model: "CONVERSE CHUCK TAYLOR ALL STAR",
+    category: "TRAMPKI",
+    price: 269.99,
+    rating: 4.8,
+    ratingUsers: 3,
+    discountFrom: 379.99,
+    sizes: [36, 38, 39.5, 40],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/9krwmeh0/converse-chuck-taylor-all-star-damskie-trampki-bialy-132173c.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/m53uxllq/converse-chuck-taylor-all-star-damskie-trampki-bialy-132173c_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/spxzgpsl/converse-chuck-taylor-all-star-damskie-trampki-bialy-132173c_4.jpg",
+    ],
+    description: [
+      "Jesteś kobietą, która lubi mieć w swojej szafie obuwie na każdą okazję? Najlepszym pomysłem będzie zakup butów na tyle uniwersalnych, że jeden model z łatwością założysz do wielu stylizacji. Na co postawisz? Trampki Converse Chuck Taylor All Star to Twój must have! Ponadczasowy model niskich, białych trampek pasować będzie na każdą okoliczność.  Jeśli uwielbiasz klasyczne rozwiązania, ale z drugiej strony starasz się w każdej sytuacji pokazać swój charakter – postaw na ikonę miejskiego looku i wybierz damskie buty Converse. Cholewka trampek Chuck Taylor stworzona została ze skóry naturalnej, dzięki czemu będziesz mogła się cieszyć trwałością przez wiele sezonów intensywnego użytkowania, a zarazem odczujesz perfekcyjne dopasowanie. Przód buta pokryto gumowym wzmocnieniem, co da ochronę Twoim palcom. Białe trampki Converse to również charakterystyczna wulkanizowana, gumowa podeszwa, która oferuje Ci perfekcyjną przyczepność na każdej miejskiej nawierzchni.  Podeszwę butów Converse Chuck Taylor All Star zdobią czerwony pasek okalający sylwetkę trampek oraz granatowa linia umieszczona po środku podeszwy. Po zewnętrznej stronie damskich trampek Converse znajdują się otwory wentylacyjne, które zagwarantują Ci optymalną cyrkulację.  Cholewka krótkich białych Converse’ów pozwoli Ci cieszyć się swobodą ruchów, a miękkie tekstylne wnętrze damskich, białych trampek ochroni Twoje stopy przed powstawaniem otarć. Niskie, białe Conversy to zdecydowany must have w szafie każdej miłośniczki miejskiego looku. Klasyczna sylwetka i uniwersalna kolorystyka uzupełnią każdy damski look. A Ty, masz już swój model białych Converse Chuck Taylor All Star w swojej kolekcji? ",
+      "Cholewka: skóra naturalna",
+      "Wyściółka: materiał tekstylny",
+      "Podeszwa: guma",
+    ],
+  },
+  {
+    id: "7",
+    companyUrl: "https://www.freepnglogos.com/uploads/puma-logo-png-1.png",
+    model: "PUMA ENZO 2",
+    category: "TRAMPKI",
+    price: 279.99,
+    rating: 5.0,
+    ratingUsers: 59,
+    discountFrom: 339.99,
+    sizes: [40, 41, 42.5, 43, 44.5, 46],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/ozyd4sqj/puma-enzo-2-meskie-sneakersy-czarny-19324901.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/iuz8h0an/puma-enzo-2-meskie-sneakersy-czarny-19324901_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/qntqql8a/puma-enzo-2-meskie-sneakersy-czarny-19324901_3.jpg",
+    ],
+    description: [
+      "Sportowa propozycja dla miłośników pełni komfortu w codziennych, luźnych zestawieniach. Buty Enzo 2 od marki Puma wykonane są z lekkich i oddychających materiałów. Stabilizują je syntetyczne nakładki, które w fantazyjny sposób łączą się ze sznurowaniem. Na zapiętku oraz języku umieszczono pętelki, które ułatwiają zakładanie i ściąganie butów. Sprężysta podeszwa gwarantuje zmiękczenie kroków i przyczepność na różnych nawierzchniach.",
+      "Wierzch: materiał tekstylny, materiał syntetyczny",
+      "Wyściółka: materiał tekstylny",
+      "Wkładka: SoftFoam",
     ],
   },
 ];

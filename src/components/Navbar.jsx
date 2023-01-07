@@ -3,16 +3,19 @@ import { BiUserCircle } from "react-icons/bi";
 import { RxHeart } from "react-icons/rx";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { BsSearch } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="flex  w-full py-5 px-[9%] justify-between items-center bg-gray-100 mb-20 ">
-      <div className="">
-        <img
-          className="w-[160px] h-[50px] object-cover"
-          src="https://bm-discounts-prd-app-imageautoresize02.azureedge.net/imageautoresize/v2/L2Rpc2NvdW50cy1waWN0dXJlcy84NzFkNWU2ZC0xYjhiLTQzOTYtYjU2OC03ZmQzYzBmOWU1OTIvNTJjNTgyZWMtMjZmMC00YWU5LTljYWItZjcxZTRiNjUwMjRmLnBuZw2/"
-          alt=""
-        />
+    <nav className="flex  w-full py-5 px-[9%] justify-between items-center bg-gray-100">
+      <div>
+        <Link to="/">
+          <img
+            className="w-[160px] h-[50px] object-cover"
+            src="https://bm-discounts-prd-app-imageautoresize02.azureedge.net/imageautoresize/v2/L2Rpc2NvdW50cy1waWN0dXJlcy84NzFkNWU2ZC0xYjhiLTQzOTYtYjU2OC03ZmQzYzBmOWU1OTIvNTJjNTgyZWMtMjZmMC00YWU5LTljYWItZjcxZTRiNjUwMjRmLnBuZw2/"
+            alt=""
+          />
+        </Link>
       </div>
       <ul className="flex gap-10 font-semibold text-sm	">
         <li className="hover:text-[#f4811f] cursor-pointer">DAMSKIE</li>
