@@ -14,6 +14,7 @@ import Navbar from "./Navbar";
 import banner from "../images/SALE_banner.jpg";
 import banner2 from "../images/SALE_banner2.jpg";
 import BannerSlider from "./BannerSlider";
+import LogoSlider from "./LogoSlider";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -103,6 +104,7 @@ const SingleProduct = () => {
           <Description item={item} />
         </div>
       </div>
+      <LogoSlider />
     </>
   );
 };

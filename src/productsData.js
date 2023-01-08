@@ -161,6 +161,98 @@ const shoes = [
       "Wkładka: SoftFoam",
     ],
   },
+  {
+    id: "8",
+    companyUrl:
+      "https://1000logos.net/wp-content/uploads/2017/06/Vans-Logo-1966.jpg",
+    model: "VANS UA AUTHENTIC",
+    category: "TRAMPKI",
+    price: 299.99,
+    rating: 5.0,
+    ratingUsers: 3,
+    discountFrom: 369.99,
+    sizes: [37, 38, 38.5, 40, 41, 42.5, 43],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/wzolabrl/vans-ua-authentic-damskie-trampki-bialy-vn0a5krd7051.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/kis2cgt9/vans-ua-authentic-damskie-trampki-bialy-vn0a5krd7051_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/nkp3qaau/vans-ua-authentic-damskie-trampki-bialy-vn0a5krd7051_4.jpg",
+    ],
+    description: [
+      "Szachownica to print, który jest nieodłącznym elementem marki Vans. Tym razem brand wykorzystał go w kultowym modelu UA Authentic wykonanym z wysokiej jakości materiału tekstylnego. Podczas dłuższych wyjść nie musisz martwić się o wygodę, ponieważ stopy otula miękka wyściółka zapobiegająca otarciom. Żyjesz w miejskim biegu? Za sprawą solidnej podeszwy z gumy możesz pewnie stawiać każdy krok! Te trampki to must-have w szafie każdej amatorki streetwearu!",
+      "Wierzch: materiał tekstylny  ",
+      "Wyściółka: materiał tekstylny ",
+      "Podeszwa: guma",
+    ],
+  },
+  {
+    id: "9",
+    companyUrl:
+      "https://1000logos.net/wp-content/uploads/2017/06/Vans-Logo-1966.jpg",
+    model: "VANS OLD SKOOL",
+    category: "TRAMPKI",
+    price: 259.99,
+    rating: 5.0,
+    ratingUsers: 3,
+    discountFrom: 369.99,
+    sizes: [40, 41, 42.5, 43, 45, 46],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/vrdq2n0p/vans-old-skool-meskie-sneakersy-czarny-vn0a5jmizb31.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/tv1ocawo/vans-old-skool-meskie-sneakersy-czarny-vn0a5jmizb31_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/5jdtkbmy/vans-old-skool-meskie-sneakersy-czarny-vn0a5jmizb31_3.jpg",
+    ],
+    description: [
+      "Płócienno-zamszowe cholewki Vansów Old Skool prezentują się znakomicie. A jeśli dodamy do tego kwiatowy print, zyskujemy efekt wow! Wprowadzając taki model do swoich codziennych outfitów możesz mieć pewność, że zwrócisz na siebie uwagę otoczenia! Buty wyposażono w klasyczne sznurowadła, aby dać możliwość indywidualnego dopasowania, a także wewnętrzną wyściółkę dbającą o prawidłową wentylację i chroniącą stopy przed otarciami. Spód modelu tworzy solidna, odporna na ścieranie podeszwa z gumy. Bieżnik o strukturze wafla gwarantuje właściwą przyczepność do podłoża, nie musisz więc obawiać się niekontrolowanych poślizgów. Dopełnieniem całości jest firmowy znak rozpoznawczy - jazz stripe, czyli słynny już pasek w kształcie fali.      ",
+      "Wierzch: skóra naturalna – zamsz, płótno      ",
+      "Wyściółka: materiał tekstylny ",
+      "Podeszwa: guma",
+    ],
+  },
+  {
+    id: "10",
+    companyUrl:
+      "https://www.pngall.com/wp-content/uploads/8/Reebok-Logo-Transparent.png",
+    model: "REEBOK CLUB C 85",
+    category: "TRAMPKI",
+    price: 349.99,
+    rating: 4.9,
+    ratingUsers: 8,
+    sizes: [40, 41, 42.5, 43, 45, 46],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/UNKfDfd0/reebok-club-c-85-meskie-sneakersy-bialy-gx1703.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/X3KtCMcq/reebok-club-c-85-meskie-sneakersy-bialy-gx1703_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/y4YFDoZE/reebok-club-c-85-meskie-sneakersy-bialy-gx1703_4.jpg",
+    ],
+    description: [
+      "Zakupy są jak street-art – na spontanie wychodzą lepiej! Reebok Club to model, który musi znaleźć się w Twojej szafie. Jest lekki, wytrzymały, a do tego świetnie fituje z ubraniami o miejskim charakterze. Niskoprofilowy top pokrywa miękka skóra zamszowa. Wnętrze wyścieła materiałowa wyściółka o dobrych właściwościach izolacyjnych. Guma u podstawy także się sprawdza. Dzięki niej buty pewnie przylegają do podłoża i są bardzo stabilne. Zależy Ci na swobodzie i ponadczasowym looku? Postaw na sneakersy Reebok Club! ",
+      "Wierzch: skóra naturalna – zamsz ",
+      "Wyściółka: materiał tekstylny ",
+      "Podeszwa: guma",
+    ],
+  },
+  {
+    id: "10",
+    companyUrl:
+      "https://www.pngall.com/wp-content/uploads/8/Reebok-Logo-Transparent.png",
+    model: "REEBOK ZIG KINETICA 2.5  ",
+    category: "TRAMPKI",
+    price: 359.99,
+    discountFrom: 449.99,
+    rating: 5,
+    ratingUsers: 35,
+    sizes: [41, 42.5, 43],
+    images: [
+      "https://sklep.sizeer.com/media/cache/gallery/rc/1HAQ4D2J/reebok-zig-kinetica-2-5-meskie-sneakersy-szary-hr1388.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/C0Bs6qCC/reebok-zig-kinetica-2-5-meskie-sneakersy-szary-hr1388_2.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/PMyzcSFB/reebok-zig-kinetica-2-5-meskie-sneakersy-szary-hr1388_3.jpg",
+      "https://sklep.sizeer.com/media/cache/gallery/rc/xCN3lIcf/reebok-zig-kinetica-2-5-meskie-sneakersy-szary-hr1388_4.jpg",
+    ],
+    description: [
+      "Nieoczywista forma, nowoczesne wzornictwo i śmiałe rozwiązania technologiczne – to wszystko oferują buty Reebok Zig Kinetica! Ich sylwetka zachwyca dynamiką i zwraca się ku modzie przyszłości. Warstwowy top tworzy trwałą, solidną konstrukcję. Wnętrze otula miękkością i pozwala ukoić zmęczenie. Kolejną zaletą jest amortyzująca pianka Floatride Fuel, która umożliwia płynny chód bez poczucia dyskomfortu. Przewagę zapewniają także innowacyjne systemy: Energy Bands oraz Zig Energy Shell. Pierwszy z nich dodaje krokom energii, a drugi dba o sprężyste wybicie od podłoża. Odważ się na skok w przyszłość w sneakersach Reebok Zig Kinetica! ",
+      "Wierzch: materiał tekstylny, materiał syntetyczny ",
+      "Podeszwa: tworzywo syntetyczne, pianka Floatride Fuel",
+      "Technologie: Energy Bands, Zig Energy Shell",
+    ],
+  },
 ];
 
 export default shoes;

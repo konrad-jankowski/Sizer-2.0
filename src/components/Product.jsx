@@ -1,18 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Rating from "./Rating";
 
 const Product = ({ item }) => {
   return (
     <div className="w-[235px] h-[270px]">
-      <img className="w-[235px] h-[235px]" src={item.images[0]} alt="" />
+      <Link to={`${item.id}`}>
+        <img className="w-[235px] h-[235px]" src={item.images[0]} alt="" />
+      </Link>
       <div className="flex justify-between mt-2">
         <div>
-          <h3>{item.model.substring(0, 17)}</h3>
-          <h3>{/* <Rating rating={item.rating} /> */}</h3>
-          <h4 className="text-sm">
+          <Link to={`${item.id}`}>
+            <h3 className="hover:underline font-semibold text-sm">
+              {item.model.substring(0, 17)}
+            </h3>
+          </Link>
+          <h4 className="text-sm font-semibold">
             {item.price} ZŁ{" "}
-            <span className="line-through	text-gray-400">
+            <span className="line-through	text-gray-500 font-semibold text-sm">
               {item.discountFrom ? item.discountFrom + " ZŁ" : null}
             </span>
           </h4>
@@ -25,9 +29,6 @@ const Product = ({ item }) => {
           />
         </div>
       </div>
-      <button>
-        <Link to={`${item.id}`}>Show more</Link>
-      </button>
     </div>
   );
 };

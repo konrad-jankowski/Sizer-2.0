@@ -3,6 +3,7 @@ import Product from "./Product";
 import SortBar from "./SortBar";
 import shoes from "../productsData";
 import Navbar from "./Navbar";
+import BannerSlider from "./BannerSlider";
 
 const Main_grid = () => {
   const [items] = useState(shoes);
@@ -10,10 +11,11 @@ const Main_grid = () => {
   return (
     <>
       <Navbar />
-      <main className="ml-[30%] mr-[9%] mt-20 ">
+      <BannerSlider />
+      <main className="ml-[30%] mr-[9%] my-[20rem] ">
         <div className="w-full h-[500px]  flex flex-col justify-center">
           <SortBar />
-          <div className="grid grid-cols-4 gap-12 mt-6	">
+          <div className="grid grid-cols-4 gap-14 mt-6	">
             {items.map((item) => (
               <Product item={item} key={item.id} />
             ))}
