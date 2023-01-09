@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="flex  w-full py-5 px-[9%] justify-between items-center bg-gray-100">
+    <nav className="flex  w-full h-[14vh]  px-[9%] justify-between items-center bg-white">
       <div>
         <Link to="/">
           <img
@@ -21,7 +21,9 @@ const Navbar = () => {
         <li className="hover:text-[#f4811f] cursor-pointer">DAMSKIE</li>
         <li className="hover:text-[#f4811f] cursor-pointer">MĘSKIE</li>
         <li className="hover:text-[#f4811f] cursor-pointer">DZIECIĘCE</li>
-        <li className="hover:text-[#f4811f] cursor-pointer">MARKI</li>
+        <Link to="/marki">
+          <li className="hover:text-[#f4811f] cursor-pointer">MARKI</li>
+        </Link>
         <li className="hover:text-[#f4811f] cursor-pointer">SALE</li>
         <li className="hover:text-[#f4811f] cursor-pointer">NOWOŚCI</li>
         <li className="hover:text-[#f4811f] cursor-pointer">STREETWEAR</li>

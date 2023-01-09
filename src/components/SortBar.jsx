@@ -2,9 +2,9 @@ import React from "react";
 import { AiOutlineRight, AiOutlineLeft } from "react-icons/ai";
 import shoes from "../productsData";
 
-const SortBar = ({ filterValueSelected }) => {
+const SortBar = ({ onFilterValueSelected }) => {
   const onFilterValueChange = (e) => {
-    filterValueSelected(e.target.value);
+    onFilterValueSelected(e.target.value);
   };
 
   return (
@@ -20,6 +20,7 @@ const SortBar = ({ filterValueSelected }) => {
           <option value="popularne">POPULARNE</option>
           <option value="OD NAJTAŃSZYCH">OD NAJTAŃSZYCH</option>
           <option value="OD NAJDROŻSZYCH">OD NAJDROŻSZYCH</option>
+          <option value="promocje">PROMOCJE</option>
         </select>
       </div>
       <div>

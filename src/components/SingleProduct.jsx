@@ -14,6 +14,7 @@ import Navbar from "./Navbar";
 import BannerSlider from "./BannerSlider";
 import LogoSlider from "./LogoSlider";
 import ScrollToTopButton from "./ScrollToTopButton";
+import Footer from "./Footer";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -105,6 +106,7 @@ const SingleProduct = () => {
         </div>
       </div>
       <LogoSlider />
+      <Footer />
     </>
   );
 };

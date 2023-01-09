@@ -9,21 +9,36 @@ import LogoSlider from "./LogoSlider";
 import ScrollToTopButton from "./ScrollToTopButton";
 
 const Main_grid = () => {
-  const [items] = useState(shoes);
+  const [items, setItems] = useState(shoes);
+  const [filterTextValue, updateFilterTextValue] = useState("popularne");
 
-  console.log(items.sort((a, b) => (a.price > b.price ? 1 : -1)));
+  const filterResult = (catItem) => {
+    const result = shoes.filter((curData) => {
+      return curData.category === catItem;
+    });
+    setItems(result);
+  };
 
-  let [filterTextValue, updateFilterTextValue] = useState("popularne");
-
-  let filteredProductList = items.filter((products) => {
+  const filteredProductList = items.filter((products) => {
     if (filterTextValue === "OD NAJTAŃSZYCH") {
-      console.log(products.sort((a, b) => (a.price > b.price ? 1 : -1)));
+      items.sort((a, b) => (a.price > b.price ? 1 : -1));
+    } else if (filterTextValue === "OD NAJDROŻSZYCH") {
+      items.sort((a, b) => (a.price < b.price ? 1 : -1));
+    } else if (filterTextValue === "popularne") {
+      items.sort((a, b) => (a.ratingUsers < b.ratingUsers ? 1 : -1));
     }
   });
 
   const onFilterValueSelected = (filterValue) => {
     updateFilterTextValue(filterValue);
-    console.log(filterValue);
+    const result = shoes.filter((item) => {
+      return item.discountFrom;
+    });
+    if (filterValue === "promocje") {
+      setItems(result);
+    } else {
+      setItems(shoes);
+    }
   };
 
   return (
@@ -33,7 +48,9 @@ const Main_grid = () => {
       <BannerSlider />
       <main className="ml-[30%] mr-[9%] my-[20rem] ">
         <div className="w-full h-[500px]  flex flex-col justify-center">
-          <SortBar filterValueSelected={onFilterValueSelected} />
+          <SortBar onFilterValueSelected={onFilterValueSelected} />
+          <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
+          <button onClick={() => filterResult("SNEAKERSY")}>Sneakersy</button>
           <div className="grid grid-cols-4 gap-14 mt-6	">
             {items.map((item) => (
               <Product item={item} key={item.id} />

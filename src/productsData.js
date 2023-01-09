@@ -2,6 +2,7 @@ const shoes = [
   {
     id: "0",
     companyUrl: "https://sklep.sizeer.com/images/loga_marek/Nike_karta.png",
+    brand: "Nike",
     model: "NIKE AIR FORCE 1 ",
     category: "SNEAKERSY",
     price: 649.99,
@@ -24,6 +25,7 @@ const shoes = [
   {
     id: "1",
     companyUrl: "https://sklep.sizeer.com/images/loga_marek/Nike_karta.png",
+    brand: "Nike",
     model: "NIKE AIR MAX 90",
     category: "SNEAKERSY",
     price: 629.99,
@@ -41,6 +43,7 @@ const shoes = [
   {
     id: "2",
     companyUrl: "https://sklep.sizeer.com/images/loga_marek/Nike_karta.png",
+    brand: "Nike",
     category: "SNEAKERSY",
     model: "NIKE WAFFLE ONE",
     price: 419.99,
@@ -58,6 +61,7 @@ const shoes = [
     companyUrl:
       "https://creativeheads.pl/wp-content/uploads/2019/10/logo-adidas-koniczyna.png",
     model: "ADIDAS SUPERSTAR VEGAN",
+    brand: "Adidas",
     category: "SNEAKERSY",
     price: 399.99,
     rating: 4.0,
@@ -74,6 +78,7 @@ const shoes = [
     id: "4",
     companyUrl:
       "https://creativeheads.pl/wp-content/uploads/2019/10/logo-adidas-koniczyna.png",
+    brand: "Adidas",
     model: "ADIDAS NMD_R1",
     category: "SNEAKERSY",
     price: 489.99,
@@ -97,6 +102,7 @@ const shoes = [
     id: "5",
     companyUrl:
       "https://cdn.shopify.com/s/files/1/0513/0174/4799/files/etnies-social_e28f1be2-f085-4efa-a263-b4afeea4f623_1200x.png?v=1624366480",
+    brand: "Etnies",
     model: "ETNIES WINDROW",
     category: "SNEAKERSY",
     price: 259.99,
@@ -120,6 +126,7 @@ const shoes = [
     id: "6",
     companyUrl:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Converse_logo.svg.png",
+    brand: "Converse",
     model: "CONVERSE CHUCK TAYLOR ALL STAR",
     category: "TRAMPKI",
     price: 269.99,
@@ -143,7 +150,8 @@ const shoes = [
     id: "7",
     companyUrl: "https://www.freepnglogos.com/uploads/puma-logo-png-1.png",
     model: "PUMA ENZO 2",
-    category: "TRAMPKI",
+    brand: "Puma",
+    category: "SNEAKERSY",
     price: 279.99,
     rating: 5.0,
     ratingUsers: 59,
@@ -165,6 +173,7 @@ const shoes = [
     id: "8",
     companyUrl:
       "https://1000logos.net/wp-content/uploads/2017/06/Vans-Logo-1966.jpg",
+    brand: "Vans",
     model: "VANS UA AUTHENTIC",
     category: "TRAMPKI",
     price: 299.99,
@@ -188,6 +197,7 @@ const shoes = [
     id: "9",
     companyUrl:
       "https://1000logos.net/wp-content/uploads/2017/06/Vans-Logo-1966.jpg",
+    brand: "Vans",
     model: "VANS OLD SKOOL",
     category: "TRAMPKI",
     price: 259.99,
@@ -211,8 +221,9 @@ const shoes = [
     id: "10",
     companyUrl:
       "https://www.pngall.com/wp-content/uploads/8/Reebok-Logo-Transparent.png",
+    brand: "Reebok",
     model: "REEBOK CLUB C 85",
-    category: "TRAMPKI",
+    category: "SNEAKERSY",
     price: 349.99,
     rating: 4.9,
     ratingUsers: 8,
@@ -233,6 +244,7 @@ const shoes = [
     id: "11",
     companyUrl:
       "https://www.pngall.com/wp-content/uploads/8/Reebok-Logo-Transparent.png",
+    brand: "Reebok",
     model: "REEBOK ZIG KINETICA 2.5  ",
     category: "TRAMPKI",
     price: 359.99,
