@@ -18,9 +18,21 @@
 }
 
 .active {
-  border: 2px solid #e77600;
+  border: 2px solid #f4811f;
 }
 
 li::marker {
   color: #f4811f;
+}
+
+.label input[type="checkbox"] {
+  display: none;
+}
+
+.label span {
+  transition: 0.2s;
+}
+.label input[type="checkbox"]:checked ~ span {
+  background: #f4811f;
+  border: 1px solid #f4811f;
 }

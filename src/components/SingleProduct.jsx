@@ -11,10 +11,9 @@ import Size from "../components/Size";
 import ProcentageCalculator from "../components/ProcentageCalculator";
 import Description from "../components/Description";
 import Navbar from "./Navbar";
-import banner from "../images/SALE_banner.jpg";
-import banner2 from "../images/SALE_banner2.jpg";
 import BannerSlider from "./BannerSlider";
 import LogoSlider from "./LogoSlider";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -25,6 +24,7 @@ const SingleProduct = () => {
 
   return (
     <>
+      <ScrollToTopButton />
       <Navbar />
       <BannerSlider />
       <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>

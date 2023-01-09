@@ -230,7 +230,7 @@ const shoes = [
     ],
   },
   {
-    id: "10",
+    id: "11",
     companyUrl:
       "https://www.pngall.com/wp-content/uploads/8/Reebok-Logo-Transparent.png",
     model: "REEBOK ZIG KINETICA 2.5  ",
