@@ -99,8 +99,10 @@ const SingleProduct = () => {
             </div>
           </div>
           <div className="mt-4 flex gap-4">
-            <Button_buy />
-            <Button_favorite />
+            <Button_buy text={{ text: "dodaj do koszyka" }} />
+            <Button_favorite
+              text={{ text: "dodaj do schowka", class: "bg-white w-full" }}
+            />
           </div>
           <Description item={item} />
         </div>

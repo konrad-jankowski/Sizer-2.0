@@ -14,9 +14,9 @@ const Product = ({ item }) => {
               {item.model.substring(0, 17)}
             </h3>
           </Link>
-          <h4 className="text-sm font-semibold">
+          <h4 className="text-sm font-bold">
             {item.price} ZŁ{" "}
-            <span className="line-through	text-gray-500 font-semibold text-sm">
+            <span className="line-through	text-gray-500 font-bold text-sm">
               {item.discountFrom ? item.discountFrom + " ZŁ" : null}
             </span>
           </h4>
