@@ -8,6 +8,7 @@ import Footer from "./Footer";
 import LogoSlider from "./LogoSlider";
 import ScrollToTopButton from "./ScrollToTopButton";
 import ShoppingCart from "./ShoppingCart";
+import ShoppingCartEmpty from "./ShoppingCartEmpty";
 
 const Main_grid = () => {
   const [items, setItems] = useState(shoes);
@@ -47,7 +48,8 @@ const Main_grid = () => {
       <ScrollToTopButton />
       <Navbar />
       <BannerSlider />
-      <ShoppingCart />
+      {/* <ShoppingCart /> */}
+      <ShoppingCartEmpty />
       <main className="ml-[30%] mr-[9%] my-[20rem] ">
         <div className="w-full h-[500px]  flex flex-col justify-center">
           <SortBar onFilterValueSelected={onFilterValueSelected} />

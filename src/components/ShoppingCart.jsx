@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import data from "../productsData";
 import { RiCloseLine } from "react-icons/ri";
+import { ToggleAuth } from "../context/ToggleCardContext";
 
 const ShoppingCart = () => {
   const airforce = data[0];
 
-  const [toggle, setToggle] = useState(true);
+  const { toggle, setToggle } = ToggleAuth();
+
+  // const [toggle, setToggle] = useState(true);
 
   return (
     <div className={toggle ? "" : "hidden"}>
@@ -14,7 +17,7 @@ const ShoppingCart = () => {
         <div className="flex justify-between my-8 ">
           <h2 className="font-bold text-xl ml-8">TWÓJ KOSZYK (2)</h2>
           <RiCloseLine
-            size={26}
+            size={28}
             className="hover:text-[#f4811f] cursor-pointer"
             onClick={() => setToggle((prev) => !prev)}
           />
