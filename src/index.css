@@ -36,3 +36,7 @@ li::marker {
   background: #f4811f;
   border: 1px solid #f4811f;
 }
+
+#slider::-webkit-scrollbar {
+  display: none;
+}

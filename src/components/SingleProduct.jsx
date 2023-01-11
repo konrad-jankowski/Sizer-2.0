@@ -15,6 +15,8 @@ import BannerSlider from "./BannerSlider";
 import LogoSlider from "./LogoSlider";
 import ScrollToTopButton from "./ScrollToTopButton";
 import Footer from "./Footer";
+import { HiOutlineShoppingBag } from "react-icons/hi";
+import { RxHeart } from "react-icons/rx";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -99,9 +101,13 @@ const SingleProduct = () => {
             </div>
           </div>
           <div className="mt-4 flex gap-4">
-            <Button_buy text={{ text: "dodaj do koszyka" }} />
+            <Button_buy
+              icon={<HiOutlineShoppingBag size={22} />}
+              text={{ text: "dodaj do koszyka" }}
+            />
             <Button_favorite
-              text={{ text: "dodaj do schowka", class: "bg-white w-full" }}
+              icon={<RxHeart size={16} />}
+              text={{ text: "dodaj do schowka" }}
             />
           </div>
           <Description item={item} />

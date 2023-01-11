@@ -9,6 +9,7 @@ import LogoSlider from "./LogoSlider";
 import ScrollToTopButton from "./ScrollToTopButton";
 import ShoppingCart from "./ShoppingCart";
 import ShoppingCartEmpty from "./ShoppingCartEmpty";
+import ProductSlider from "./ProductSlider";
 
 const Main_grid = () => {
   const [items, setItems] = useState(shoes);
