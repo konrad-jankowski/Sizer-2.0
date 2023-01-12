@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import Brands from "./pages/Brands";
 import { ToggleCardContextProvider } from "./context/ToggleCardContext";
 import Login from "./pages/Login";
+import Sale from "./pages/Sale";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<Main_grid />} />
             <Route path="/login" element={<Login />} />
             <Route path="/marki" element={<Brands />} />
+            <Route path="/wyprzedaż" element={<Sale />} />
             <Route path="/:id" element={<SingleProduct />} />
           </Routes>
         </BrowserRouter>

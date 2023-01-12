@@ -45,7 +45,9 @@ const Navbar = () => {
         <Link to="/marki">
           <li className="hover:text-[#f4811f] cursor-pointer">MARKI</li>
         </Link>
-        <li className="hover:text-[#f4811f] cursor-pointer">SALE</li>
+        <Link to="/wyprzedaż">
+          <li className="hover:text-[#f4811f] cursor-pointer">SALE</li>
+        </Link>
         <li className="hover:text-[#f4811f] cursor-pointer">NOWOŚCI</li>
         <li className="hover:text-[#f4811f] cursor-pointer">STREETWEAR</li>
       </ul>
