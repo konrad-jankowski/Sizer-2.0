@@ -33,7 +33,7 @@ const SingleProduct = () => {
       <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>
         <div className="flex-1   mr-20">
           <p className="mt-4 mb-10 flex gap-2 items-center text-sm font-medium  ">
-            SIZEER <SlArrowRight fill="#f4811f" /> SNEAKERSY{" "}
+            SIZEER <SlArrowRight fill="#f4811f" /> {item.category}{" "}
             <SlArrowRight fill="#f4811f" />{" "}
             <span className="text-[#f4811f]">{item.model}</span>{" "}
           </p>
