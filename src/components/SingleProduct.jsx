@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 import { SlArrowRight } from "react-icons/sl";
 import Button_buy from "../components/Button_buy";
@@ -16,7 +16,7 @@ import LogoSlider from "./LogoSlider";
 import ScrollToTopButton from "./ScrollToTopButton";
 import Footer from "./Footer";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { RxHeart } from "react-icons/rx";
+import { IoMdHeartEmpty } from "react-icons/io";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -106,7 +106,7 @@ const SingleProduct = () => {
               text={{ text: "dodaj do koszyka" }}
             />
             <Button_favorite
-              icon={<RxHeart size={16} />}
+              icon={<IoMdHeartEmpty size={18} />}
               text={{ text: "dodaj do schowka" }}
             />
           </div>

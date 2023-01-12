@@ -10,7 +10,7 @@ const LogoSlider = () => {
     <div className="bg-gray-200 flex items-center justify-evenly h-[100px]">
       {uniqueObjArray.map((item) => {
         return (
-          <div className="w-[70px] h-[70px]">
+          <div className="w-[70px] h-[70px]" key={item.id}>
             <img
               className="w-full h-full object-contain mix-blend-darken opacity-50 hover:opacity-30 cursor-pointer"
               src={item.companyUrl}

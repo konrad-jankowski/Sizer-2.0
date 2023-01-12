@@ -1,20 +1,38 @@
 import React, { useState } from "react";
 import { BiUserCircle } from "react-icons/bi";
-import { RxHeart } from "react-icons/rx";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { IoMdHeartEmpty } from "react-icons/io";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Navbar = () => {
+  const [isSticky, setIsSticky] = useState(true);
+
+  const changeNavbar = () => {
+    if (window.scrollY >= 80) {
+      setIsSticky(false);
+    } else {
+      setIsSticky(true);
+    }
+  };
+
+  window.addEventListener("scroll", changeNavbar);
+
   const { setToggle } = ToggleAuth();
 
   return (
-    <nav className="flex  w-full h-[14vh]  px-[9%] justify-between items-center bg-white">
+    <nav
+      className={
+        isSticky
+          ? "z-10 flex  w-full h-[12vh]  px-[9%] justify-between items-center bg-white "
+          : "sticky top-0 shadow-sm shadow-black/40 z-10 flex  w-full h-[10vh]  px-[9%] justify-between items-center bg-white "
+      }
+    >
       <div>
         <Link to="/">
           <img
-            className="w-[160px] h-[50px] object-cover"
+            className="w-[150px] h-[50px] object-cover"
             src="https://bm-discounts-prd-app-imageautoresize02.azureedge.net/imageautoresize/v2/L2Rpc2NvdW50cy1waWN0dXJlcy84NzFkNWU2ZC0xYjhiLTQzOTYtYjU2OC03ZmQzYzBmOWU1OTIvNTJjNTgyZWMtMjZmMC00YWU5LTljYWItZjcxZTRiNjUwMjRmLnBuZw2/"
             alt=""
           />
@@ -32,11 +50,13 @@ const Navbar = () => {
         <li className="hover:text-[#f4811f] cursor-pointer">STREETWEAR</li>
       </ul>
       <ul className="flex gap-4 text-xs ">
-        <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer ">
-          <BiUserCircle size={26} /> ZALOGUJ
-        </li>
+        <Link to="/login">
+          <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer ">
+            <BiUserCircle size={26} /> {isSticky ? "ZALOGUJ" : null}
+          </li>
+        </Link>
         <li className="flex flex-col items-center gap-1   hover:text-[#f4811f] cursor-pointer">
-          <RxHeart size={26} /> SCHOWEK
+          <IoMdHeartEmpty size={26} /> {isSticky ? "SCHOWEK" : null}
         </li>
         <li
           onClick={() => setToggle((prev) => !prev)}
@@ -46,11 +66,11 @@ const Navbar = () => {
           <div className="absolute right-[6px] top-[-5px] bg-gray-300 h-[20px] w-[20px] flex justify-center items-center rounded-full text-xs  ">
             1
           </div>
-          KOSZYK
+          {isSticky ? "KOSZYK" : null}
         </li>
         <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer">
           <BsSearch size={26} />
-          SZUKAJ
+          {isSticky ? "SZUKAJ" : null}
         </li>
       </ul>
     </nav>

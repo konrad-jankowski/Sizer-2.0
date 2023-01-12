@@ -40,3 +40,7 @@ li::marker {
 #slider::-webkit-scrollbar {
   display: none;
 }
+
+.sticky {
+  transition: all 0.3s ease;
+}
