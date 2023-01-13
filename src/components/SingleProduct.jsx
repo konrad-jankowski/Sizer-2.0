@@ -33,19 +33,21 @@ const SingleProduct = () => {
       <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>
         <div className="flex-1   mr-20">
           <p className="mt-4 mb-10 flex gap-2 items-center text-sm font-medium  ">
-            SIZEER <SlArrowRight fill="#f4811f" /> {item.category}{" "}
+            SIZEER <SlArrowRight fill="#f4811f" /> {item?.category}{" "}
             <SlArrowRight fill="#f4811f" />{" "}
-            <span className="text-[#f4811f]">{item.model}</span>{" "}
+            <span className="text-[#f4811f]">{item?.model}</span>{" "}
           </p>
-          <Slider item={item.images} />
+          <Slider item={item?.images} />
         </div>
         <div className="flex-1 ">
           <div className="flex justify-between">
             <div>
-              <h1 className="text-lg font-bold mb-2">{item.model}</h1>
+              <h1 className="text-lg font-bold mb-2">{item?.model}</h1>
               <div className="flex gap-2 items-center mb-2">
-                <Rating rating={item.rating} />
-                <span className="text-gray-500 font-medium">{item.rating}</span>
+                <Rating rating={item?.rating} />
+                <span className="text-gray-500 font-medium">
+                  {item?.rating}
+                </span>
                 <span className="text-xs text-gray-500 font-semibold">
                   ( {item.ratingUsers} )
                 </span>
@@ -57,12 +59,12 @@ const SingleProduct = () => {
             </div>
             <img
               className="w-[78px] h-[54px] object-contain"
-              src={item.companyUrl}
+              src={item?.companyUrl}
               alt=""
             />
           </div>
           <div className="flex gap-2 text-sm font-semibold text-[#f4811f] items-center mb-3">
-            <span className="text-5xl font-bold mr-2">{item.price} zł</span> z
+            <span className="text-5xl font-bold mr-2">{item?.price} zł</span> z
             Vat +
             <img
               className="w-[28px h-[20px]"
@@ -71,10 +73,10 @@ const SingleProduct = () => {
             />
             DARMOWA DOSTAWA
           </div>
-          {item.discountFrom ? (
+          {item?.discountFrom ? (
             <h3 className="text-xs font-medium text-[#f4811f]  mb-6">
               <span className="line-through text-gray-400 mr-1">
-                Cena początkowa: {item.discountFrom}zł
+                Cena początkowa: {item?.discountFrom}zł
               </span>
               <ProcentageCalculator item={item} />
             </h3>
@@ -83,10 +85,10 @@ const SingleProduct = () => {
             PRODUKT SPECJALNY
           </h3>
           <h4 className="font-bold text-xs mt-2 mb-4 hover:underline cursor-pointer ">
-            {item.category}
+            {item?.category}
           </h4>
           <div className="flex mt-2 mb-6">
-            <Size item={item.sizes} />
+            <Size item={item?.sizes} />
           </div>
           <div className="mt-2 flex justify-between">
             <div className="flex items-center justify-center">

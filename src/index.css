@@ -18,7 +18,7 @@
 }
 
 .active {
-  border: 2px solid #f4811f;
+  color: #f4811f;
 }
 
 li::marker {

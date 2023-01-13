@@ -3,7 +3,7 @@ import { BiUserCircle } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsSearch } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Navbar = () => {
@@ -42,12 +42,12 @@ const Navbar = () => {
         <li className="hover:text-[#f4811f] cursor-pointer">DAMSKIE</li>
         <li className="hover:text-[#f4811f] cursor-pointer">MĘSKIE</li>
         <li className="hover:text-[#f4811f] cursor-pointer">DZIECIĘCE</li>
-        <Link to="/marki">
+        <NavLink to="/marki">
           <li className="hover:text-[#f4811f] cursor-pointer">MARKI</li>
-        </Link>
-        <Link to="/wyprzedaż">
+        </NavLink>
+        <NavLink to="/wyprzedaż">
           <li className="hover:text-[#f4811f] cursor-pointer">SALE</li>
-        </Link>
+        </NavLink>
         <li className="hover:text-[#f4811f] cursor-pointer">NOWOŚCI</li>
         <li className="hover:text-[#f4811f] cursor-pointer">STREETWEAR</li>
       </ul>

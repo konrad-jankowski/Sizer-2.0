@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button_buy from "../components/Button_buy";
 import Navbar from "../components/Navbar";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePassword = () => {
+    const x = document.getElementById("pass");
+    if (x.type === "password") {
+      x.type = "text";
+      setShowPassword(true);
+    } else {
+      x.type = "password";
+      setShowPassword(false);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -13,7 +27,7 @@ const Login = () => {
           <div className="flex-1">
             <h3 className="font-semibold text-lg mb-6">Logowanie</h3>
             <form className="pl-10 pr-10 flex flex-col items-end gap-3">
-              <span className="flex">
+              <span className="flex items-center">
                 <label className="cursor-pointer mr-2" for="email">
                   Adres e-mail
                 </label>
@@ -24,7 +38,7 @@ const Login = () => {
                   name="email"
                 />
               </span>
-              <span className="flex ">
+              <span className="flex items-center relative">
                 <label className="cursor-pointer mr-2" for="pass">
                   Hasło
                 </label>
@@ -34,6 +48,12 @@ const Login = () => {
                   id="pass"
                   name="password"
                 />
+                <p
+                  onClick={togglePassword}
+                  className="absolute select-none right-6 cursor-pointer text-xs text-black/70"
+                >
+                  {showPassword ? "Ukryj" : "Pokaż"}
+                </p>
               </span>
               <span className="flex justify-between w-[400px] text-gray-400 text-sm mb-2">
                 <div>
@@ -60,12 +80,14 @@ const Login = () => {
               <li>dostęp do historii zakupów i listy życzeń</li>
               <li>możliwość przystąpienia do SizeerClub</li>
             </ul>
-            <Button_buy
-              text={{
-                text: "zarejestruj się",
-                class: "bg-black hover:bg-black/80 place-self-end	mt-6 mr-10",
-              }}
-            />
+            <Link to="/rejestracja">
+              <Button_buy
+                text={{
+                  text: "zarejestruj się",
+                  class: "bg-black hover:bg-black/80 place-self-end	mt-6 mr-10",
+                }}
+              />
+            </Link>
           </div>
         </main>
       </section>
