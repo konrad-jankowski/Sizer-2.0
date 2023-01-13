@@ -28,7 +28,7 @@ const Login = () => {
             <h3 className="font-semibold text-lg mb-6">Logowanie</h3>
             <form className="pl-10 pr-10 flex flex-col items-end gap-3">
               <span className="flex items-center">
-                <label className="cursor-pointer mr-2" for="email">
+                <label className="cursor-pointer mr-2" htmlFor="email">
                   Adres e-mail
                 </label>
                 <input
@@ -39,7 +39,7 @@ const Login = () => {
                 />
               </span>
               <span className="flex items-center relative">
-                <label className="cursor-pointer mr-2" for="pass">
+                <label className="cursor-pointer mr-2" htmlFor="pass">
                   Hasło
                 </label>
                 <input
@@ -58,7 +58,7 @@ const Login = () => {
               <span className="flex justify-between w-[400px] text-gray-400 text-sm mb-2">
                 <div>
                   <input type="checkbox" id="remember" name="remember" />
-                  <label className="cursor-pointer ml-2" for="remember">
+                  <label className="cursor-pointer ml-2" htmlFor="remember">
                     Zapamiętaj mnie
                   </label>
                 </div>
@@ -80,11 +80,11 @@ const Login = () => {
               <li>dostęp do historii zakupów i listy życzeń</li>
               <li>możliwość przystąpienia do SizeerClub</li>
             </ul>
-            <Link to="/rejestracja">
+            <Link className="place-self-end" to="/rejestracja">
               <Button_buy
                 text={{
                   text: "zarejestruj się",
-                  class: "bg-black hover:bg-black/80 place-self-end	mt-6 mr-10",
+                  class: "bg-black hover:bg-black/80 mt-6 mr-10",
                 }}
               />
             </Link>

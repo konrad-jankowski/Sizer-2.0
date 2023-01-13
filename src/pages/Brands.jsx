@@ -13,7 +13,10 @@ const Brands = () => {
       <h1 className="text-center m-6 font-bold text-4xl">Marki</h1>
       <div className="flex px-[9%]">
         {uniqueObjArray.map((item) => (
-          <div className="w-[200px] h-[200px] flex flex-col justify-center items-center bg-white m-4 cursor-pointer border-4 border-white hover:border-[#f4811f] ">
+          <div
+            key={item.id}
+            className="w-[200px] h-[200px] flex flex-col justify-center items-center bg-white m-4 cursor-pointer border-4 border-white hover:border-[#f4811f] "
+          >
             <img
               className="w-[100px] h-[150px] object-contain"
               src={item.companyUrl}

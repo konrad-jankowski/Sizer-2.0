@@ -49,8 +49,8 @@ const Main_grid = () => {
       <ScrollToTopButton />
       <Navbar />
       <BannerSlider />
-      <ShoppingCart />
-      {/* <ShoppingCartEmpty /> */}
+      {/* <ShoppingCart /> */}
+      <ShoppingCartEmpty />
       <main className="ml-[30%] mr-[9%] my-[20rem] ">
         <div className="w-full h-[500px]  flex flex-col justify-center">
           <SortBar onFilterValueSelected={onFilterValueSelected} />

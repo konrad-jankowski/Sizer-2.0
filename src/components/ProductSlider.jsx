@@ -8,7 +8,7 @@ const ProductSlider = () => {
       className="mt-2 w-[352px] m-auto overflow-x-scroll whitespace-nowrap scroll-smooth overflow-y-clip relative"
     >
       {data.map((item) => (
-        <div className="inline-block">
+        <div key={item.id} className="inline-block">
           <img
             className="w-[160px] h-[160px] mr-8 cursor-pointer"
             src={item.images[0]}

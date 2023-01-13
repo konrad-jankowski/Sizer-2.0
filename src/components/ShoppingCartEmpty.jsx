@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import data from "../productsData";
-import cartIcon from "../images/cart-icon.svg";
+import React from "react";
 import { RiCloseLine } from "react-icons/ri";
 import { ToggleAuth } from "../context/ToggleCardContext";
 import ShoppingCartEmpty_button from "./ShoppingCartEmpty_button";
@@ -9,27 +7,47 @@ import ProductSlider from "./ProductSlider";
 
 const ShoppingCartEmpty = () => {
   const slideLeft = () => {
-    var slider = document.getElementById(`slider`);
+    const slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft - 192;
-    console.log(slider);
   };
   const slideRight = () => {
-    var slider = document.getElementById(`slider`);
+    const slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft + 192;
   };
 
   const { toggle, setToggle } = ToggleAuth();
 
+  const closeHandler = () => {
+    setToggle((prev) => !prev);
+    const elo = document.getElementById("essa");
+    elo.classList.add("sidebar");
+  };
+
+  const openHandler = () => {
+    setToggle((prev) => !prev);
+    const elo = document.getElementById("essa");
+    elo.classList.add("sidebarOut");
+  };
+
   return (
-    <div className={toggle ? "" : "hidden"}>
-      <div className="absolute top-0 left-0 bg-black/80 w-full h-[260vh] z-10  " />
-      <aside className="fixed top-0 right-0 w-[30vw] h-[100vh] z-20 bg-white px-5 shadow-lg shadow-[#000000cd]	">
+    <>
+      <div
+        className={`absolute top-0 left-0 bg-black/80 w-full h-[260vh] z-10 ${
+          toggle ? "" : "hidden"
+        } `}
+      />
+      <aside
+        className={`essa fixed top-0 right-0 w-[30vw] h-[100vh] z-20 bg-white px-5 shadow-lg shadow-[#000000cd] ${
+          toggle ? "sidebar" : "sidebarOut"
+        } `}
+      >
         <div className="flex justify-between my-7 ">
           <h2 className="font-bold text-xl ml-8">TWÓJ KOSZYK (2)</h2>
           <RiCloseLine
             size={28}
             className="hover:text-[#f4811f] cursor-pointer"
-            onClick={() => setToggle((prev) => !prev)}
+            onClick={closeHandler}
+            // onClick={() => setToggle((prev) => !prev)}
           />
         </div>
         <img
@@ -71,7 +89,7 @@ const ShoppingCartEmpty = () => {
           />
         </div>
       </aside>
-    </div>
+    </>
   );
 };
 
