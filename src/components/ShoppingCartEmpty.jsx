@@ -17,18 +17,6 @@ const ShoppingCartEmpty = () => {
 
   const { toggle, setToggle } = ToggleAuth();
 
-  const closeHandler = () => {
-    setToggle((prev) => !prev);
-    const elo = document.getElementById("essa");
-    elo.classList.add("sidebar");
-  };
-
-  const openHandler = () => {
-    setToggle((prev) => !prev);
-    const elo = document.getElementById("essa");
-    elo.classList.add("sidebarOut");
-  };
-
   return (
     <>
       <div
@@ -37,8 +25,8 @@ const ShoppingCartEmpty = () => {
         } `}
       />
       <aside
-        className={`essa fixed top-0 right-0 w-[30vw] h-[100vh] z-20 bg-white px-5 shadow-lg shadow-[#000000cd] ${
-          toggle ? "sidebar" : "sidebarOut"
+        className={`fixed top-0 right-0 w-[30vw] h-[100vh] z-20 bg-white px-5 shadow-lg shadow-[#000000cd] ${
+          toggle ? "sidebar" : "hidden"
         } `}
       >
         <div className="flex justify-between my-7 ">
@@ -46,8 +34,7 @@ const ShoppingCartEmpty = () => {
           <RiCloseLine
             size={28}
             className="hover:text-[#f4811f] cursor-pointer"
-            onClick={closeHandler}
-            // onClick={() => setToggle((prev) => !prev)}
+            onClick={() => setToggle((prev) => !prev)}
           />
         </div>
         <img

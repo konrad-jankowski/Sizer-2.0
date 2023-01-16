@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button_buy from "../components/Button_buy";
 import Navbar from "../components/Navbar";
+import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
 
 const Registration = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +20,7 @@ const Registration = () => {
 
   return (
     <>
+      <ShoppingCartEmpty />
       <Navbar />
       <section className="px-[9%]">
         <h2 className="mb-4 font-bold text-xl mt-12 ">TWOJE KONTO</h2>

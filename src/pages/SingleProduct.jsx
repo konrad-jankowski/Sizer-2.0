@@ -10,13 +10,14 @@ import Rating from "../components/Rating";
 import Size from "../components/Size";
 import ProcentageCalculator from "../components/ProcentageCalculator";
 import Description from "../components/Description";
-import Navbar from "./Navbar";
-import BannerSlider from "./BannerSlider";
-import LogoSlider from "./LogoSlider";
-import ScrollToTopButton from "./ScrollToTopButton";
-import Footer from "./Footer";
+import Navbar from "../components/Navbar";
+import BannerSlider from "../components/BannerSlider";
+import LogoSlider from "../components/LogoSlider";
+import ScrollToTopButton from "../components/ScrollToTopButton";
+import Footer from "../components/Footer";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdHeartEmpty } from "react-icons/io";
+import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -28,6 +29,7 @@ const SingleProduct = () => {
   return (
     <>
       <ScrollToTopButton />
+      <ShoppingCartEmpty />
       <Navbar />
       <BannerSlider />
       <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>

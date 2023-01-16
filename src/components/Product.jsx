@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { formatCurrency } from "../utilities/formatCurrency";
 
 const Product = ({ item }) => {
   return (
@@ -15,9 +16,9 @@ const Product = ({ item }) => {
             </h3>
           </Link>
           <h4 className="text-sm font-bold">
-            {item.price} ZŁ{" "}
+            {formatCurrency(item.price)}{" "}
             <span className="line-through	text-gray-500 font-bold text-sm">
-              {item.discountFrom ? item.discountFrom + " ZŁ" : null}
+              {item.discountFrom ? formatCurrency(item.discountFrom) : null}
             </span>
           </h4>
         </div>

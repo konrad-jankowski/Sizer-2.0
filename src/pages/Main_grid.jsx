@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Product from "./Product";
-import SortBar from "./SortBar";
+import Product from "../components/Product";
+import SortBar from "../components/SortBar";
 import shoes from "../productsData";
-import Navbar from "./Navbar";
-import BannerSlider from "./BannerSlider";
-import Footer from "./Footer";
-import LogoSlider from "./LogoSlider";
-import ScrollToTopButton from "./ScrollToTopButton";
-import ShoppingCart from "./ShoppingCart";
-import ShoppingCartEmpty from "./ShoppingCartEmpty";
-import ProductSlider from "./ProductSlider";
+import Navbar from "../components/Navbar";
+import BannerSlider from "../components/BannerSlider";
+import Footer from "../components/Footer";
+import LogoSlider from "../components/LogoSlider";
+import ScrollToTopButton from "../components/ScrollToTopButton";
+import ShoppingCart from "../components/ShoppingCart";
+import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
+import Filter from "../components/Filter";
 
 const Main_grid = () => {
   const [items, setItems] = useState(shoes);
@@ -18,6 +18,12 @@ const Main_grid = () => {
   const filterResult = (catItem) => {
     const result = shoes.filter((curData) => {
       return curData.category === catItem;
+    });
+    setItems(result);
+  };
+  const filterBrands = (brandItem) => {
+    const result = shoes.filter((curData) => {
+      return curData.brand === brandItem;
     });
     setItems(result);
   };
@@ -54,8 +60,10 @@ const Main_grid = () => {
       <main className="ml-[30%] mr-[9%] my-[20rem] ">
         <div className="w-full h-[500px]  flex flex-col justify-center">
           <SortBar onFilterValueSelected={onFilterValueSelected} />
+          <Filter />
           <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
           <button onClick={() => filterResult("SNEAKERSY")}>Sneakersy</button>
+          <button onClick={() => filterBrands("Adidas")}>Adidas</button>
           <div className="grid grid-cols-4 gap-14 mt-6	">
             {items.map((item) => (
               <Product item={item} key={item.id} />
