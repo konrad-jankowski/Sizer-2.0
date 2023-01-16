@@ -149,6 +149,7 @@ const Registration = () => {
             </p>
           </div>
         </main>
+        <h2>REJESTRACJA ZAKOŃCZONA POWODZENIEM. AKTYWUJ KONTO!</h2>
       </section>
     </>
   );

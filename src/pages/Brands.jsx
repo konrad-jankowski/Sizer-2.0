@@ -32,7 +32,7 @@ const Brands = () => {
   };
 
   return (
-    <main className="bg-gray-200 h-[100vh] ">
+    <main className="bg-gray-200 h-[88vh] flex flex-col items-center">
       <ShoppingCartEmpty />
       <h2 className="text-center m-6 font-bold text-4xl">Marki</h2>
       <p className="text-center text-sm font-medium text-gray-600">Flitry</p>
@@ -49,15 +49,15 @@ const Brands = () => {
       </div>
       <h3
         onClick={() => setDataArray(sortedArray)}
-        className=" text-center  mb-3 underline font-semibold hover:text-[#f4811f] cursor-pointer"
+        className="mb-3 underline font-semibold hover:text-[#f4811f] cursor-pointer"
       >
         WSZYSTKIE MARKI
       </h3>
-      <div className="flex px-[9%]">
+      <div className="flex justify-center ">
         {dataArray.map((item) => (
           <div
             key={item.id}
-            className="w-[200px] h-[200px] flex flex-col justify-center items-center bg-white m-4 cursor-pointer border-4 border-white hover:border-[#f4811f] "
+            className="w-[160px] h-[200px] flex flex-col justify-center items-center bg-white m-4 cursor-pointer border-4 border-white hover:border-[#f4811f] "
           >
             <img
               className="w-[100px] h-[150px] object-contain"
