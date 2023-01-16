@@ -6,7 +6,6 @@ const Sale = () => {
   return (
     <>
       <ShoppingCartEmpty />
-      <Navbar />
       <h1>WYPRZEDZAŻ</h1>
     </>
   );

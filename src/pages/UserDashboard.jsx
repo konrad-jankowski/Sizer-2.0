@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 const UserDashboard = () => {
   return (
     <>
-      <Navbar />
       <div>
         <nav className="border w-[300px]">
           <h2>Witaj</h2>

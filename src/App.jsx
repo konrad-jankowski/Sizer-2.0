@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Registration from "./pages/Registration";
 import Sale from "./pages/Sale";
 import UserDashboard from "./pages/UserDashboard";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <ToggleCardContextProvider>
         <BrowserRouter>
           <ScrollToTop />
+          <Navbar />
           <Routes>
             <Route path="/" element={<Main_grid />} />
             <Route path="/login" element={<Login />} />

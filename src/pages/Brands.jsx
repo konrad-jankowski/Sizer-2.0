@@ -34,7 +34,6 @@ const Brands = () => {
   return (
     <main className="bg-gray-200 h-[100vh] ">
       <ShoppingCartEmpty />
-      <Navbar />
       <h2 className="text-center m-6 font-bold text-4xl">Marki</h2>
       <p className="text-center text-sm font-medium text-gray-600">Flitry</p>
       <div className="flex justify-center gap-6 mb-6 mt-5">
@@ -48,6 +47,12 @@ const Brands = () => {
           </p>
         ))}
       </div>
+      <h3
+        onClick={() => setDataArray(sortedArray)}
+        className=" text-center  mb-3 underline font-semibold hover:text-[#f4811f] cursor-pointer"
+      >
+        WSZYSTKIE MARKI
+      </h3>
       <div className="flex px-[9%]">
         {dataArray.map((item) => (
           <div

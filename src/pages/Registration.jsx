@@ -21,7 +21,6 @@ const Registration = () => {
   return (
     <>
       <ShoppingCartEmpty />
-      <Navbar />
       <section className="px-[9%]">
         <h2 className="mb-4 font-bold text-xl mt-12 ">TWOJE KONTO</h2>
         <hr />

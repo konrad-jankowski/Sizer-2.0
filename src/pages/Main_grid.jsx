@@ -53,21 +53,22 @@ const Main_grid = () => {
   return (
     <>
       <ScrollToTopButton />
-      <Navbar />
       <BannerSlider />
       {/* <ShoppingCart /> */}
       <ShoppingCartEmpty />
-      <main className="ml-[30%] mr-[9%] my-[20rem] ">
-        <div className="w-full h-[500px]  flex flex-col justify-center">
-          <SortBar onFilterValueSelected={onFilterValueSelected} />
+      <main className="my-12 flex justify-center">
+        <div className="flex flex-row gap-4">
           <Filter />
-          <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
-          <button onClick={() => filterResult("SNEAKERSY")}>Sneakersy</button>
-          <button onClick={() => filterBrands("Adidas")}>Adidas</button>
-          <div className="grid grid-cols-4 gap-14 mt-6	">
-            {items.map((item) => (
-              <Product item={item} key={item.id} />
-            ))}
+          <div>
+            <SortBar onFilterValueSelected={onFilterValueSelected} />
+            {/* <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
+            <button onClick={() => filterResult("SNEAKERSY")}>Sneakersy</button>
+            <button onClick={() => filterBrands("Adidas")}>Adidas</button> */}
+            <div className="grid grid-cols-4 gap-x-4 gap-y-10 mt-6	">
+              {items.map((item) => (
+                <Product item={item} key={item.id} />
+              ))}
+            </div>
           </div>
         </div>
       </main>
