@@ -117,7 +117,6 @@ const SingleProduct = () => {
         </div>
       </div>
       <LogoSlider />
-      <Footer />
     </>
   );
 };

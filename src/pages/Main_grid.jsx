@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import Product from "../components/Product";
 import SortBar from "../components/SortBar";
 import shoes from "../productsData";
-import Navbar from "../components/Navbar";
 import BannerSlider from "../components/BannerSlider";
-import Footer from "../components/Footer";
 import LogoSlider from "../components/LogoSlider";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import ShoppingCart from "../components/ShoppingCart";
@@ -61,9 +59,9 @@ const Main_grid = () => {
           <Filter />
           <div>
             <SortBar onFilterValueSelected={onFilterValueSelected} />
-            {/* <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
+            <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
             <button onClick={() => filterResult("SNEAKERSY")}>Sneakersy</button>
-            <button onClick={() => filterBrands("Adidas")}>Adidas</button> */}
+            <button onClick={() => filterBrands("Adidas")}>Adidas</button>
             <div className="grid grid-cols-4 gap-x-4 gap-y-10 mt-6	">
               {items.map((item) => (
                 <Product item={item} key={item.id} />
@@ -73,7 +71,6 @@ const Main_grid = () => {
         </div>
       </main>
       <LogoSlider />
-      <Footer />
     </>
   );
 };

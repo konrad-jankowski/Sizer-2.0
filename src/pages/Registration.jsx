@@ -21,7 +21,7 @@ const Registration = () => {
   return (
     <>
       <ShoppingCartEmpty />
-      <section className="px-[9%]">
+      <section className="px-[9%] mb-10">
         <h2 className="mb-4 font-bold text-xl mt-12 ">TWOJE KONTO</h2>
         <hr />
         <main className="flex mt-8">

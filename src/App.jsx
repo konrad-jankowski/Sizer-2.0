@@ -9,6 +9,7 @@ import Registration from "./pages/Registration";
 import Sale from "./pages/Sale";
 import UserDashboard from "./pages/UserDashboard";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/wyprzedaż" element={<Sale />} />
             <Route path="/:id" element={<SingleProduct />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </ToggleCardContextProvider>
     </>

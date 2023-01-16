@@ -2,20 +2,41 @@ import React from "react";
 import Button_buy from "../components/Button_buy";
 
 const UserDashboard = () => {
+  const leftBorder =
+    "relative before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:bg-black";
+
+  const dashbordLinks = [
+    "pulpit",
+    "zamówienia",
+    "książka adresowa",
+    "SIZEERCLUB",
+    "ustawienia",
+    "schowek",
+  ];
+
   return (
     <>
-      <div className="flex px-[9%] mt-6 gap-6">
-        <nav className="  w-[300px] h-fit font-semibold text-sm">
+      <div className="flex px-[9%] mt-6 mb-10 gap-6">
+        <nav className="  w-[300px] h-fit font-semibold text-sm border">
           <ul>
-            <li className="border py-2 pl-4">Witaj</li>
-            <li className=" border-l-black border-l-4 border-r pl-12 py-2">
-              PULPIT
+            <li className=" py-2 pl-4">Witaj</li>
+            {/* <li className={`border-t pl-12 py-2 ${leftBorder} `}>PULPIT</li>
+            <li className="border-t py-2  pl-12 before:content-[border]">
+              ZAMÓWIENIA
             </li>
-            <li className="border py-2  pl-12">ZAMÓWIENIA</li>
-            <li className="border border-t-0 py-2 pl-12">KSIĄŻKA ADRESOWA</li>
-            <li className="border border-t-0  py-2 pl-12">SIZEERCLUB</li>
-            <li className="border border-y-0  py-2 pl-12">USTAWIENIA</li>
-            <li className="border py-2 pl-12">SCHOWEK</li>
+            <li className="relative border-t  py-2 pl-12 ">KSIĄŻKA ADRESOWA</li>
+            <li className=" border-t  py-2 pl-12">SIZEERCLUB</li>
+            <li className=" border-t  py-2 pl-12">USTAWIENIA</li>
+            <li className="border-t py-2 pl-12">SCHOWEK</li> */}
+            {dashbordLinks.map((item) => {
+              return (
+                <li
+                  className={`border-t  py-2 pl-12 uppercase hover:bg-gray-300 cursor-pointer`}
+                >
+                  {item}
+                </li>
+              );
+            })}
           </ul>
         </nav>
         <main className="flex-1">
