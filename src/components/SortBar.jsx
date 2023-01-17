@@ -39,7 +39,7 @@ const SortBar = ({ onFilterValueSelected }) => {
         <AiOutlineLeft className="cursor-pointer" />
         <h3>Strona</h3>
         <span className="border w-[35px] flex justify-center">1</span>
-        <h3>z 3</h3>
+        <h3>z 1</h3>
         <AiOutlineRight className="cursor-pointer" />
       </div>
     </div>

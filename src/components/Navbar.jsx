@@ -8,6 +8,7 @@ import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(true);
+  const { user } = ToggleAuth();
 
   const changeNavbar = () => {
     if (window.scrollY >= 80) {
@@ -52,11 +53,19 @@ const Navbar = () => {
         <li className="hover:text-[#f4811f] cursor-pointer">STREETWEAR</li>
       </ul>
       <ul className="flex gap-4 text-xs ">
-        <Link to="/login">
-          <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer ">
-            <BiUserCircle size={26} /> {isSticky ? "ZALOGUJ" : null}
-          </li>
-        </Link>
+        {user ? (
+          <Link to="/profil">
+            <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer ">
+              <BiUserCircle size={26} /> {isSticky ? "TWOJE KONTO" : null}
+            </li>
+          </Link>
+        ) : (
+          <Link to="/login">
+            <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer ">
+              <BiUserCircle size={26} /> {isSticky ? "ZALOGUJ" : null}
+            </li>
+          </Link>
+        )}
         <li className="flex flex-col items-center gap-1   hover:text-[#f4811f] cursor-pointer">
           <IoMdHeartEmpty size={26} /> {isSticky ? "SCHOWEK" : null}
         </li>

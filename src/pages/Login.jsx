@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button_buy from "../components/Button_buy";
 import Navbar from "../components/Navbar";
 import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
+import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [inputData, setInputData] = useState([
+    {
+      email: "",
+      password: "",
+    },
+  ]);
+  const { user, logIn } = ToggleAuth();
+  const navigate = useNavigate();
 
   const togglePassword = () => {
     const x = document.getElementById("pass");
@@ -17,6 +26,25 @@ const Login = () => {
       setShowPassword(false);
     }
   };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await logIn(inputData.email, inputData.password);
+      alert(`Witaj ${inputData.email}`);
+      navigate("/profil");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    setInputData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
 
   return (
     <>
@@ -27,7 +55,10 @@ const Login = () => {
         <main className="flex mt-8">
           <div className="flex-1">
             <h3 className="font-semibold text-lg mb-6">Logowanie</h3>
-            <form className="pl-10 pr-10 flex flex-col items-end gap-3">
+            <form
+              onSubmit={handleSubmit}
+              className="pl-10 pr-10 flex flex-col items-end gap-3"
+            >
               <span className="flex items-center">
                 <label className="cursor-pointer mr-2" htmlFor="email">
                   Adres e-mail
@@ -37,6 +68,8 @@ const Login = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={inputData.email}
+                  onChange={handleChange}
                 />
               </span>
               <span className="flex items-center relative">
@@ -48,6 +81,8 @@ const Login = () => {
                   type="password"
                   id="pass"
                   name="password"
+                  value={inputData.password}
+                  onChange={handleChange}
                 />
                 <p
                   onClick={togglePassword}

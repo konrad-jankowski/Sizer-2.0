@@ -10,6 +10,7 @@ import Sale from "./pages/Sale";
 import UserDashboard from "./pages/UserDashboard";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ShoppingCartEmpty from "./components/ShoppingCartEmpty";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <BrowserRouter>
           <ScrollToTop />
           <Navbar />
+          <ShoppingCartEmpty />
           <Routes>
             <Route path="/" element={<Main_grid />} />
             <Route path="/login" element={<Login />} />

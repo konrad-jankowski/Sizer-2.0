@@ -5,8 +5,6 @@ import shoes from "../productsData";
 import BannerSlider from "../components/BannerSlider";
 import LogoSlider from "../components/LogoSlider";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-import ShoppingCart from "../components/ShoppingCart";
-import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
 import Filter from "../components/Filter";
 
 const Main_grid = () => {
@@ -18,12 +16,18 @@ const Main_grid = () => {
       return curData.category === catItem;
     });
     setItems(result);
+    console.log(catItem);
   };
+
   const filterBrands = (brandItem) => {
     const result = shoes.filter((curData) => {
       return curData.brand === brandItem;
     });
     setItems(result);
+  };
+
+  const cleanResults = () => {
+    setItems(shoes);
   };
 
   const filteredProductList = items.filter((products) => {
@@ -52,16 +56,15 @@ const Main_grid = () => {
     <>
       <ScrollToTopButton />
       <BannerSlider />
-      {/* <ShoppingCart /> */}
-      <ShoppingCartEmpty />
       <main className="my-12 flex justify-center">
         <div className="flex flex-row gap-4">
-          <Filter />
+          <Filter
+            cleanResults={cleanResults}
+            filterResult={filterResult}
+            filterBrands={filterBrands}
+          />
           <div>
             <SortBar onFilterValueSelected={onFilterValueSelected} />
-            <button onClick={() => filterResult("TRAMPKI")}>Trampki</button>
-            <button onClick={() => filterResult("SNEAKERSY")}>Sneakersy</button>
-            <button onClick={() => filterBrands("Adidas")}>Adidas</button>
             <div className="grid grid-cols-4 gap-x-4 gap-y-10 mt-6	">
               {items.map((item) => (
                 <Product item={item} key={item.id} />

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router";
 import Newsletter_message from "./Newsletter_message";
 
 const Newsletter = () => {
-  const navigate = useNavigate();
-
   const [message, setMessage] = useState(true);
   const [inputData, setInputData] = useState([
     {

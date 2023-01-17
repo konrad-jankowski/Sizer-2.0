@@ -1,3 +1,4 @@
+import { useState } from "react";
 import data from "../productsData";
 import Button_buy from "./Button_buy";
 
@@ -33,7 +34,7 @@ const countLengthCategory = (param) =>
     0
   );
 
-const Filter = () => {
+const Filter = ({ filterResult, filterBrands, cleanResults }) => {
   return (
     <aside className="flex flex-col uppercase border w-[240px] px-4 h-fit ">
       <h2 className="text-center border-b pb-2 mt-2">filtry</h2>
@@ -41,8 +42,12 @@ const Filter = () => {
         <h3 className="font-semibold mb-1">Kategoria</h3>
         {uniqueCategory.map((item) => (
           <div key={item.id}>
-            <input type="checkbox" id={item.category} name={item.category} />
-            <label className="cursor-pointer ml-2" htmlFor={item.category}>
+            {/* <input type="checkbox" id={item.category} name={item.category} /> */}
+            <label
+              onClick={() => filterResult(item.category)}
+              className="cursor-pointer ml-2 select-none"
+              htmlFor={item.category}
+            >
               {item.category}
             </label>
             <p className="inline ml-2 text-gray-400">
@@ -53,8 +58,12 @@ const Filter = () => {
         <h3 className="font-semibold my-1">Marki</h3>
         {sortedArrayBrands.map((item) => (
           <div key={item.id}>
-            <input type="checkbox" id={item.brand} name={item.brand} />
-            <label className="cursor-pointer ml-2" htmlFor={item.brand}>
+            {/* <input type="checkbox" id={item.brand} name={item.brand} /> */}
+            <label
+              onClick={() => filterBrands(item.brand)}
+              className="cursor-pointer ml-2 select-none"
+              htmlFor={item.brand}
+            >
               {item.brand}
             </label>
             <p className="inline ml-2 text-gray-400">
@@ -63,7 +72,12 @@ const Filter = () => {
           </div>
         ))}
       </div>
-      <Button_buy text={{ text: "filtruj produkty", class: "my-4 text-sm" }} />
+      <button
+        onClick={() => cleanResults()}
+        className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2 px-6 py-2 text-sm  font-semibold hover:bg-[#c96c1a] uppercase my-6"
+      >
+        wyczyść
+      </button>
     </aside>
   );
 };
