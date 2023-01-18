@@ -33,7 +33,6 @@ const Brands = () => {
 
   return (
     <main className="bg-gray-200 h-[88vh] flex flex-col items-center">
-      <ShoppingCartEmpty />
       <h2 className="text-center m-6 font-bold text-4xl">Marki</h2>
       <p className="text-center text-sm font-medium text-gray-600">Flitry</p>
       <div className="flex justify-center gap-6 mb-6 mt-5">

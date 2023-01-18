@@ -54,7 +54,7 @@ const Navbar = () => {
       </ul>
       <ul className="flex gap-4 text-xs ">
         {user ? (
-          <Link to="/profil">
+          <Link to="/profil/pulpit">
             <li className="flex flex-col items-center gap-1 hover:text-[#f4811f] cursor-pointer ">
               <BiUserCircle size={26} /> {isSticky ? "TWOJE KONTO" : null}
             </li>

@@ -29,7 +29,6 @@ const SingleProduct = () => {
   return (
     <>
       <ScrollToTopButton />
-      <ShoppingCartEmpty />
       <BannerSlider />
       <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>
         <div className="flex-1   mr-20">

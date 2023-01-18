@@ -11,6 +11,9 @@ import UserDashboard from "./pages/UserDashboard";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ShoppingCartEmpty from "./components/ShoppingCartEmpty";
+import Favorite from "./components/UserDashboard/Favorite";
+import Orders from "./components/UserDashboard/Orders";
+import Screen from "./components/UserDashboard/Screen";
 
 function App() {
   return (
@@ -24,7 +27,11 @@ function App() {
             <Route path="/" element={<Main_grid />} />
             <Route path="/login" element={<Login />} />
             <Route path="/rejestracja" element={<Registration />} />
-            <Route path="/profil" element={<UserDashboard />} />
+            <Route path="/profil" element={<UserDashboard />}>
+              <Route path="pulpit" element={<Screen />} />
+              <Route path="schowek" element={<Favorite />} />
+              <Route path="zamówienia" element={<Orders />} />
+            </Route>
             <Route path="/marki" element={<Brands />} />
             <Route path="/wyprzedaż" element={<Sale />} />
             <Route path="/:id" element={<SingleProduct />} />
