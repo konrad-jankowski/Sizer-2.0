@@ -10,17 +10,38 @@ import Rating from "../components/Rating";
 import Size from "../components/Size";
 import ProcentageCalculator from "../components/ProcentageCalculator";
 import Description from "../components/Description";
-import Navbar from "../components/Navbar";
 import BannerSlider from "../components/BannerSlider";
 import LogoSlider from "../components/LogoSlider";
 import ScrollToTopButton from "../components/ScrollToTopButton";
-import Footer from "../components/Footer";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdHeartEmpty } from "react-icons/io";
-import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
+import { formatCurrencyLowercase } from "../utilities/formatCurrency";
+import { ToggleAuth } from "../context/ToggleCardContext";
+import { db } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 const SingleProduct = () => {
+  const [saved, setSaved] = useState(false);
+  const { user } = ToggleAuth();
   const { id } = useParams();
+
+  const productId = doc(db, "users", `${user?.email}`);
+
+  const saveProduct = async () => {
+    if (user?.email) {
+      setSaved(true);
+      alert("Dodano produkt do schowka");
+      await updateDoc(productId, {
+        savedFavorites: arrayUnion({
+          id: item.id,
+          model: item.model,
+          images: item.images,
+        }),
+      });
+    } else {
+      alert("Please log in to save a product");
+    }
+  };
 
   const newProduct = shoes.find((product) => product.id === id);
 
@@ -64,8 +85,10 @@ const SingleProduct = () => {
             />
           </div>
           <div className="flex gap-2 text-sm font-semibold text-[#f4811f] items-center mb-3">
-            <span className="text-5xl font-bold mr-2">{item?.price} zł</span> z
-            Vat +
+            <span className="text-5xl font-bold mr-2">
+              {formatCurrencyLowercase(item?.price)}
+            </span>{" "}
+            z Vat +
             <img
               className="w-[28px h-[20px]"
               src="https://sklep.sizeer.com/media/cache/resolve/filemanager_original/images/sizeer/icons/icon_delivery.png"
@@ -76,7 +99,7 @@ const SingleProduct = () => {
           {item?.discountFrom ? (
             <h3 className="text-xs font-medium text-[#f4811f]  mb-6">
               <span className="line-through text-gray-400 mr-1">
-                Cena początkowa: {item?.discountFrom}zł
+                Cena początkowa: {formatCurrencyLowercase(item?.discountFrom)}zł
               </span>
               <ProcentageCalculator item={item} />
             </h3>
@@ -108,9 +131,13 @@ const SingleProduct = () => {
               text={{ text: "dodaj do koszyka" }}
             />
             <Button_favorite
+              onC
               icon={<IoMdHeartEmpty size={18} />}
               text={{ text: "dodaj do schowka" }}
             />
+            <button onClick={saveProduct} className="bg-blue-300">
+              Dodaj do schowka
+            </button>
           </div>
           <Description item={item} />
         </div>

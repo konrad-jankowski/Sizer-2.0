@@ -16,7 +16,9 @@ export function ToggleCardContextProvider({ children }) {
 
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
-    setDoc(doc(db, "users", email), {});
+    setDoc(doc(db, "users", email), {
+      savedFavorites: [],
+    });
   }
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);

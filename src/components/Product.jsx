@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { formatCurrency } from "../utilities/formatCurrency";
+import { formatCurrencyUppercase } from "../utilities/formatCurrency";
 
 const Product = ({ item }) => {
   return (
@@ -16,9 +16,11 @@ const Product = ({ item }) => {
             </h3>
           </Link>
           <h4 className="text-sm font-bold">
-            {formatCurrency(item.price)}{" "}
+            {formatCurrencyUppercase(item.price)}{" "}
             <span className="line-through	text-gray-500 font-bold text-sm">
-              {item.discountFrom ? formatCurrency(item.discountFrom) : null}
+              {item.discountFrom
+                ? formatCurrencyUppercase(item.discountFrom)
+                : null}
             </span>
           </h4>
         </div>

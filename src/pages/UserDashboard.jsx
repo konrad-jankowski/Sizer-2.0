@@ -31,7 +31,7 @@ const UserDashboard = () => {
 
   return (
     <>
-      <div className="flex px-[9%] mt-6 mb-12 gap-6 h-[34.3vh] ">
+      <div className="flex px-[9%] mt-6 mb-12 gap-6 min-h-[34.3vh] ">
         <nav className="w-[300px] h-fit font-semibold text-sm border">
           <ul>
             <li className=" py-2 pl-4">Witaj</li>

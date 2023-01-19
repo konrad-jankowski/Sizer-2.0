@@ -66,9 +66,20 @@ const Navbar = () => {
             </li>
           </Link>
         )}
-        <li className="flex flex-col items-center gap-1   hover:text-[#f4811f] cursor-pointer">
-          <IoMdHeartEmpty size={26} /> {isSticky ? "SCHOWEK" : null}
-        </li>
+        {user ? (
+          <Link to="/profil/schowek">
+            <li className="flex flex-col items-center gap-1   hover:text-[#f4811f] cursor-pointer">
+              <IoMdHeartEmpty size={26} /> {isSticky ? "SCHOWEK" : null}
+            </li>
+          </Link>
+        ) : (
+          <li
+            onClick={() => alert("Zaloguj się aby móc dodawać do schowka")}
+            className="flex flex-col items-center gap-1   hover:text-[#f4811f] cursor-pointer"
+          >
+            <IoMdHeartEmpty size={26} /> {isSticky ? "SCHOWEK" : null}
+          </li>
+        )}
         <li
           onClick={() => setToggle((prev) => !prev)}
           className="relative flex flex-col items-center gap-1  hover:text-[#f4811f] cursor-pointer"
