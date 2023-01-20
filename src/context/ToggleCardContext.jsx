@@ -13,6 +13,56 @@ const ToggleCardContext = createContext();
 export function ToggleCardContextProvider({ children }) {
   const [toggle, setToggle] = useState(false);
   const [user, setUser] = useState({});
+  const [cartItems, setCartItems] = useState([]);
+  const [formData, setFormData] = useState({
+    productSize: "",
+  });
+
+  // cart functions
+  const cartQuantity = cartItems.reduce(
+    (quantity, item) => item.quantity + quantity,
+    0
+  );
+
+  function getItemQuantity(id) {
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  }
+  function increaseCartQuantity(id) {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id) == null) {
+        return [...currItems, { id, quantity: 1 }];
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity + 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
+  function decreaseCartQuantity(id) {
+    setCartItems((currItems) => {
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
+      } else {
+        return currItems.map((item) => {
+          if (item.id === id) {
+            return { ...item, quantity: item.quantity - 1 };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  }
+  function removeFromCart(id) {
+    setCartItems((currItems) => {
+      return currItems.filter((item) => item.id !== id);
+    });
+  }
+  // cart functions end
 
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
@@ -38,7 +88,22 @@ export function ToggleCardContextProvider({ children }) {
 
   return (
     <ToggleCardContext.Provider
-      value={{ toggle, setToggle, signUp, logIn, logOut, user }}
+      value={{
+        toggle,
+        setToggle,
+        signUp,
+        logIn,
+        logOut,
+        user,
+        getItemQuantity,
+        increaseCartQuantity,
+        decreaseCartQuantity,
+        removeFromCart,
+        cartItems,
+        cartQuantity,
+        formData,
+        setFormData,
+      }}
     >
       {children}
     </ToggleCardContext.Provider>
@@ -46,5 +111,9 @@ export function ToggleCardContextProvider({ children }) {
 }
 
 export function ToggleAuth() {
+  return useContext(ToggleCardContext);
+}
+
+export function useShoppingCart() {
   return useContext(ToggleCardContext);
 }

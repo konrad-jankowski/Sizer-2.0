@@ -67,6 +67,7 @@ const Login = () => {
                   name="email"
                   value={inputData.email}
                   onChange={handleChange}
+                  required
                 />
               </span>
               <span className="flex items-center relative">
@@ -80,6 +81,7 @@ const Login = () => {
                   name="password"
                   value={inputData.password}
                   onChange={handleChange}
+                  required
                 />
                 <p
                   onClick={togglePassword}

@@ -30,7 +30,7 @@ const ShoppingCartEmpty = () => {
         } `}
       >
         <div className="flex justify-between my-7 ">
-          <h2 className="font-bold text-xl ml-8">TWÓJ KOSZYK (2)</h2>
+          <h2 className="font-bold text-xl ml-8">TWÓJ KOSZYK</h2>
           <RiCloseLine
             size={28}
             className="hover:text-[#f4811f] cursor-pointer"

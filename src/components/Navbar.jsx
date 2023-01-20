@@ -4,11 +4,12 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsSearch } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
-import { ToggleAuth } from "../context/ToggleCardContext";
+import { ToggleAuth, useShoppingCart } from "../context/ToggleCardContext";
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(true);
   const { user } = ToggleAuth();
+  const { cartQuantity } = useShoppingCart();
 
   const changeNavbar = () => {
     if (window.scrollY >= 80) {
@@ -86,7 +87,7 @@ const Navbar = () => {
         >
           <HiOutlineShoppingBag className="relative" size={26} />
           <div className="absolute right-[6px] top-[-5px] bg-gray-300 h-[20px] w-[20px] flex justify-center items-center rounded-full text-xs  ">
-            1
+            {cartQuantity}
           </div>
           {isSticky ? "KOSZYK" : null}
         </li>

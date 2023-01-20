@@ -33,7 +33,7 @@ const Registration = () => {
       // alert(`Witaj ${inputData.email}`);
       setMessage(false);
       setTimeout(() => {
-        navigate("/profil");
+        navigate("/profil/pulpit");
       }, 4000);
     } catch (error) {
       console.log(error);
@@ -68,11 +68,12 @@ const Registration = () => {
                     type="text"
                     id="firstName"
                     name="firstName"
+                    required
                   />
                 </span>
                 <span className="flex items-center">
                   <label className="cursor-pointer mr-2" htmlFor="secondName">
-                    Nazwisko <span className="text-red-600">*</span>
+                    Nazwisko <span className="opacity-0">*</span>
                   </label>
                   <input
                     className="border border-gray-300 py-1  outline-none pl-2 text-sm rounded-sm w-[400px]"
@@ -92,6 +93,7 @@ const Registration = () => {
                     type="email"
                     id="email"
                     name="email"
+                    required
                   />
                 </span>
                 <span className="flex items-center relative">
@@ -105,6 +107,7 @@ const Registration = () => {
                     type="password"
                     id="pass"
                     name="password"
+                    required
                   />
                   <p
                     onClick={togglePassword}

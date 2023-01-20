@@ -38,6 +38,7 @@ const Newsletter = () => {
           <span className="flex gap-10 items-center">
             <h2 className="font-semibold text-lg">NEWSLETTER</h2>
             <input
+              required
               type="email"
               name="email"
               onChange={handleChange}
@@ -52,7 +53,7 @@ const Newsletter = () => {
               <label className="label">
                 <input
                   type="checkbox"
-                  name="damska"
+                  name="genre"
                   id="damska"
                   onChange={handleChange}
                 />
@@ -63,7 +64,7 @@ const Newsletter = () => {
               <label className="label">
                 <input
                   type="checkbox"
-                  name="męska"
+                  name="płeć"
                   id="męska"
                   onChange={handleChange}
                 />
