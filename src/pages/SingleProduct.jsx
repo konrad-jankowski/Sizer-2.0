@@ -24,8 +24,12 @@ const SingleProduct = () => {
   const [saved, setSaved] = useState(false);
   const { user } = ToggleAuth();
   const { id } = useParams();
-
   const productId = doc(db, "users", `${user?.email}`);
+  const newProduct = shoes.find((product) => product.id === id);
+  const [item] = useState(newProduct);
+  const [formData, setFormData] = useState({
+    productSize: "",
+  });
 
   const saveProduct = async () => {
     if (user?.email) {
@@ -43,9 +47,20 @@ const SingleProduct = () => {
     }
   };
 
-  const newProduct = shoes.find((product) => product.id === id);
+  function handleChange(event) {
+    const { name, value, type, checked } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
+  }
 
-  const [item] = useState(newProduct);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Dodano do koszyka rozmiar: ${formData.productSize}`);
+  };
 
   return (
     <>
@@ -99,7 +114,7 @@ const SingleProduct = () => {
           {item?.discountFrom ? (
             <h3 className="text-xs font-medium text-[#f4811f]  mb-6">
               <span className="line-through text-gray-400 mr-1">
-                Cena początkowa: {formatCurrencyLowercase(item?.discountFrom)}zł
+                Cena początkowa: {formatCurrencyLowercase(item?.discountFrom)}
               </span>
               <ProcentageCalculator item={item} />
             </h3>
@@ -107,38 +122,52 @@ const SingleProduct = () => {
           <h3 className="font-semibold text-base text-gray-400">
             PRODUKT SPECJALNY
           </h3>
-          <h4 className="font-bold text-xs mt-2 mb-4 hover:underline cursor-pointer ">
+          <h4 className="font-bold text-xs mt-2 mb-4 hover:underline cursor-pointer w-fit ">
             {item?.category}
           </h4>
-          <div className="flex mt-2 mb-6">
-            <Size item={item?.sizes} />
-          </div>
-          <div className="mt-2 flex justify-between">
-            <div className="flex items-center justify-center">
-              <div className="w-[10px] h-[10px] bg-green-600 rounded-full mr-2" />{" "}
-              <span className="text-xs">Dostępny</span>
+          <form onSubmit={handleSubmit}>
+            <div className="flex mt-2 mb-6">
+              {item.sizes.map((size, index) => (
+                <label key={size} className="label" htmlFor={size}>
+                  <input
+                    type="radio"
+                    id={size}
+                    name="productSize"
+                    value={size}
+                    onChange={handleChange}
+                  />
+                  <div className=" h-[50px]  w-[50px] border border-[#dce5e4] flex items-center justify-center cursor-pointer hover:border-y-[black]">
+                    {size}
+                  </div>
+                </label>
+              ))}
             </div>
-            <div className="flex items-center justify-center hover:text-[#f4811f] cursor-pointer">
-              <MdLocationOn size={26} />
-              <span className="underline font-semibold text-sm ml-2  ">
-                SPRAWDŹ DOSTĘPNOŚĆ W SALONACH
-              </span>
+            <div className="mt-2 flex justify-between">
+              <div className="flex items-center justify-center">
+                <div className="w-[10px] h-[10px] bg-green-600 rounded-full mr-2" />{" "}
+                <span className="text-xs">Dostępny</span>
+              </div>
+              <div className="flex items-center justify-center hover:text-[#f4811f] cursor-pointer">
+                <MdLocationOn size={26} />
+                <span className="underline font-semibold text-sm ml-2  ">
+                  SPRAWDŹ DOSTĘPNOŚĆ W SALONACH
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="mt-4 flex gap-4">
-            <Button_buy
-              icon={<HiOutlineShoppingBag size={22} />}
-              text={{ text: "dodaj do koszyka" }}
-            />
-            <Button_favorite
-              onC
-              icon={<IoMdHeartEmpty size={18} />}
-              text={{ text: "dodaj do schowka" }}
-            />
-            <button onClick={saveProduct} className="bg-blue-300">
-              Dodaj do schowka
-            </button>
-          </div>
+            <div className="mt-4 flex gap-4">
+              <Button_buy
+                icon={<HiOutlineShoppingBag size={22} />}
+                text={{ text: "dodaj do koszyka" }}
+              />
+              <button
+                type="button"
+                onClick={saveProduct}
+                className="bg-[#f3f3f3] border border-black rounded-sm flex items-center justify-center py-3 px-6 gap-2 font-semibold text-sm hover:bg-black hover:text-white uppercase"
+              >
+                <IoMdHeartEmpty size={18} /> Dodaj do schowka
+              </button>
+            </div>
+          </form>
           <Description item={item} />
         </div>
       </div>

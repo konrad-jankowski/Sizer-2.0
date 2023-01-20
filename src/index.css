@@ -28,6 +28,9 @@ li::marker {
 .label input[type="checkbox"] {
   display: none;
 }
+.label input[type="radio"] {
+  display: none;
+}
 
 .label span {
   transition: 0.2s;
@@ -35,6 +38,10 @@ li::marker {
 .label input[type="checkbox"]:checked ~ span {
   background: #f4811f;
   border: 1px solid #f4811f;
+}
+.label input[type="radio"]:checked ~ div {
+  background: rgb(229 231 235);
+  border: 1px solid rgb(229 231 235);
 }
 
 #slider::-webkit-scrollbar {
