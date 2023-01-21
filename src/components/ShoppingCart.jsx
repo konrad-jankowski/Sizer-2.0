@@ -14,8 +14,6 @@ const ShoppingCart = () => {
   const { toggle, setToggle } = ToggleAuth();
   const [newCart, setNewCart] = useState(cartItems);
 
-  console.log("CART ITEMS", cartItems);
-
   const slideLeft = () => {
     var slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft - 192;

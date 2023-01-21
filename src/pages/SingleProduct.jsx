@@ -15,7 +15,15 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import { ToggleAuth } from "../context/ToggleCardContext";
 import { db } from "../firebase";
-import { arrayUnion, doc, updateDoc, setDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  doc,
+  updateDoc,
+  addDoc,
+  collection,
+  query,
+  onSnapshot,
+} from "firebase/firestore";
 import { useShoppingCart } from "../context/ToggleCardContext";
 
 const SingleProduct = () => {
@@ -26,10 +34,11 @@ const SingleProduct = () => {
   const newProduct = shoes.find((product) => product.id === id);
   const [item, setItem] = useState(newProduct);
 
+  const [test, setTest] = useState([]);
+
   const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
 
   const quantity = getItemQuantity(item.id);
-  console.log("QUANTITY:", quantity);
   //
 
   const saveProduct = async () => {
@@ -58,26 +67,48 @@ const SingleProduct = () => {
     });
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    increaseCartQuantity(item.id);
+    await increaseCartQuantity(item.id);
     alert(`Dodano do koszyka rozmiar: ${formData.productSize}`);
     const productSize = { productSize: formData.productSize };
     setItem((prev) => {
       const newArrayWithSize = { ...prev, ...productSize };
       return newArrayWithSize;
     });
-    setDoc(doc(db, "cart", email), {
-      shoppingCartItems: [],
+    await addDoc(collection(db, "shoppingCart"), {
+      item,
     });
   };
-
-  console.log(item);
+  useEffect(() => {
+    const q = query(collection(db, "shoppingCart"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let todosArr = [];
+      querySnapshot.forEach((doc) => {
+        todosArr.push({ ...doc.data(), id: doc.id });
+      });
+      setTest(todosArr);
+      console.log(test);
+    });
+    return () => unsubscribe();
+  }, []);
 
   return (
     <>
       <ScrollToTopButton />
       <BannerSlider />
+      {test.map((item) => {
+        if (item.item.productSize) {
+          return (
+            <div className="flex gap-4">
+              <h1>{item.item.model}</h1>
+              <h1>{item.item.productSize}</h1>
+              <h1></h1>
+            </div>
+          );
+        }
+      })}
+      <h1>elo</h1>
       <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>
         <div className="flex-1   mr-20">
           <p className="mt-4 mb-10 flex gap-2 items-center text-sm font-medium  ">
