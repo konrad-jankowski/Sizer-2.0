@@ -12,6 +12,9 @@ import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 const ShoppingCart = () => {
   const { cartItems, cartQuantity } = useShoppingCart();
   const { toggle, setToggle } = ToggleAuth();
+  const [newCart, setNewCart] = useState(cartItems);
+
+  console.log("CART ITEMS", cartItems);
 
   const slideLeft = () => {
     var slider = document.getElementById(`slider`);
@@ -45,13 +48,13 @@ const ShoppingCart = () => {
             onClick={() => setToggle((prev) => !prev)}
           />
         </div>
-        {cartItems.map((item) => (
+        {newCart.map((item) => (
           <ShoppingCartProduct key={item.id} {...item} />
         ))}
         <h2 className="font-bold text-xl ml-8 text-end mr-10">
           Łączna wartość:{" "}
           {formatCurrencyLowercase(
-            cartItems.reduce((total, cartItem) => {
+            newCart.reduce((total, cartItem) => {
               const item = data.find((i) => i.id === cartItem.id);
               return total + (item?.price || 0) * cartItem.quantity;
             }, 0)

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { MdLocationOn } from "react-icons/md";
 import { SlArrowRight } from "react-icons/sl";
-import Button_buy from "../components/Button_buy";
 import Slider from "../components/Slider";
 import shoes from "../productsData";
 import Rating from "../components/Rating";
@@ -16,7 +15,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import { ToggleAuth } from "../context/ToggleCardContext";
 import { db } from "../firebase";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, updateDoc, setDoc } from "firebase/firestore";
 import { useShoppingCart } from "../context/ToggleCardContext";
 
 const SingleProduct = () => {
@@ -25,15 +24,12 @@ const SingleProduct = () => {
   const { id } = useParams();
   const productId = doc(db, "users", `${user?.email}`);
   const newProduct = shoes.find((product) => product.id === id);
-  const [item] = useState(newProduct);
-  /*   const [formData, setFormData] = useState({
-    productSize: "",
-  }); */
+  const [item, setItem] = useState(newProduct);
 
-  //
   const { getItemQuantity, increaseCartQuantity } = useShoppingCart();
+
   const quantity = getItemQuantity(item.id);
-  console.log(quantity);
+  console.log("QUANTITY:", quantity);
   //
 
   const saveProduct = async () => {
@@ -64,8 +60,19 @@ const SingleProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    increaseCartQuantity(item.id);
     alert(`Dodano do koszyka rozmiar: ${formData.productSize}`);
+    const productSize = { productSize: formData.productSize };
+    setItem((prev) => {
+      const newArrayWithSize = { ...prev, ...productSize };
+      return newArrayWithSize;
+    });
+    setDoc(doc(db, "cart", email), {
+      shoppingCartItems: [],
+    });
   };
+
+  console.log(item);
 
   return (
     <>
@@ -85,6 +92,7 @@ const SingleProduct = () => {
             <div>
               <h1 className="text-lg font-bold mb-2">{item?.model}</h1>
               <div className="flex gap-2 items-center mb-2">
+                <h1 className="text-3xl">{item?.productSize}</h1>
                 <Rating rating={item?.rating} />
                 <span className="text-gray-500 font-medium">
                   {item?.rating}
@@ -161,10 +169,7 @@ const SingleProduct = () => {
               </div>
             </div>
             <div className="mt-4 flex gap-4">
-              <button
-                className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2 px-6 py-2  font-semibold hover:bg-[#c96c1a] uppercase"
-                onClick={() => increaseCartQuantity(item.id)}
-              >
+              <button className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2 px-6 py-2  font-semibold hover:bg-[#c96c1a] uppercase">
                 <HiOutlineShoppingBag size={22} />
                 dodaj do koszyka
               </button>
