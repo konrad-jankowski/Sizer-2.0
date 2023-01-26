@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import ShoppingCartEmpty_button from "./ShoppingCartEmpty_button";
+import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
   const { test, setTest, quantityy } = useShoppingCart();
@@ -165,18 +166,28 @@ const ShoppingCart = () => {
           />
         </div>
         <span className="flex flex-col gap-3">
-          <Button_buy
-            text={{
-              text: "przejdź do koszyka",
-              class: "h-12 text-lg",
-            }}
-          />
-          <Button_favorite
-            text={{
-              text: "kontynuuj zakupy",
-              class: "bg-white w-full h-12 text-lg",
-            }}
-          />
+          {
+            <Link onClick={() => setToggle(false)} to="koszyk/lista">
+              <Button_buy
+                text={{
+                  text: "przejdź do koszyka",
+                  class: `h-12 text-lg w-full ${
+                    quantityy === 0 ? "hidden" : null
+                  }`,
+                }}
+              />
+            </Link>
+          }
+          <div onClick={() => setToggle(false)}>
+            <Button_favorite
+              text={{
+                text: "kontynuuj zakupy",
+                class: `bg-white w-full h-12 text-lg ${
+                  quantityy === 0 ? "hidden" : null
+                }`,
+              }}
+            />
+          </div>
         </span>
       </aside>
     </>

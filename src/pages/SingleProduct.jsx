@@ -11,7 +11,7 @@ import BannerSlider from "../components/BannerSlider";
 import LogoSlider from "../components/LogoSlider";
 import ScrollToTopButton from "../components/ScrollToTopButton";
 import { HiOutlineShoppingBag } from "react-icons/hi";
-import { IoMdHeartEmpty } from "react-icons/io";
+import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import { ToggleAuth } from "../context/ToggleCardContext";
 import { db } from "../firebase";
@@ -25,7 +25,7 @@ import {
 
 const SingleProduct = () => {
   const [saved, setSaved] = useState(false);
-  const { user } = ToggleAuth();
+  const { user, setToggle } = ToggleAuth();
   const { id } = useParams();
   const productId = doc(db, "users", `${user?.email}`);
   const newProduct = shoes.find((product) => product.id === id);
@@ -37,7 +37,7 @@ const SingleProduct = () => {
   const saveProduct = async () => {
     if (user?.email) {
       setSaved(true);
-      alert("Dodano produkt do schowka");
+      // alert("Dodano produkt do schowka");
       await updateDoc(productId, {
         savedFavorites: arrayUnion({
           id: item.id,
@@ -68,6 +68,14 @@ const SingleProduct = () => {
       const newArrayWithSize = { ...prev, ...productSize };
       return newArrayWithSize;
     });
+    setToggle(true);
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+    scrollToTop();
   };
 
   const addNewDoc = async () => {
@@ -183,7 +191,8 @@ const SingleProduct = () => {
                 onClick={saveProduct}
                 className="bg-[#f3f3f3] border border-black rounded-sm flex items-center justify-center py-3 px-6 gap-2 font-semibold text-sm hover:bg-black hover:text-white uppercase"
               >
-                <IoMdHeartEmpty size={18} /> Dodaj do schowka
+                {saved ? <IoMdHeart size={18} /> : <IoMdHeartEmpty size={18} />}{" "}
+                Dodaj do schowka
               </button>
             </div>
           </form>

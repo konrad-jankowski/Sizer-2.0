@@ -84,3 +84,7 @@ li::marker {
     transform: translateX(500px);
   }
 }
+
+.tuptril {
+  transition: all 1s linear;
+}

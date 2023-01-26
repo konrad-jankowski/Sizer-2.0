@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ToggleAuth } from "../../context/ToggleCardContext";
 import { db } from "../../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Favorite = () => {
   const [products, setProducts] = useState([]);
@@ -9,14 +10,16 @@ const Favorite = () => {
 
   const renderProducts = products.map((item) => (
     <div className="mt-4 flex flex-col gap-1" key={item.id}>
-      <img
-        className="w-[130px] h-[130px] object-contain cursor-pointer"
-        src={item.images[0]}
-        alt={item.model}
-      />
-      <h3 className="font-medium hover:underline cursor-pointer">
-        {item.model.substring(0, 13) + "..."}
-      </h3>
+      <Link to={`${item.id}`}>
+        <img
+          className="w-[130px] h-[130px] object-contain cursor-pointer"
+          src={item.images[0]}
+          alt={item.model}
+        />
+        <h3 className="font-medium hover:underline cursor-pointer">
+          {item.model.substring(0, 13) + "..."}
+        </h3>
+      </Link>
       <button
         onClick={() => deleteProduct(item.id)}
         className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2  py-1  font-semibold hover:bg-[#c96c1a] uppercase"

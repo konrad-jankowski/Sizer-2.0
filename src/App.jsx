@@ -13,6 +13,7 @@ import ShoppingCart from "./components/ShoppingCart";
 import Favorite from "./components/UserDashboard/Favorite";
 import Orders from "./components/UserDashboard/Orders";
 import Screen from "./components/UserDashboard/Screen";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route path="/wyprzedaż" element={<Sale />} />
           <Route path={`/:id`} element={<SingleProduct />} />
           <Route path="/wyprzedaż/:id" element={<SingleProduct />} />
+          <Route path="/profil/schowek/:id" element={<SingleProduct />} />
+          <Route path="/koszyk/lista" element={<Cart />} />
         </Routes>
         <Footer />
       </BrowserRouter>
