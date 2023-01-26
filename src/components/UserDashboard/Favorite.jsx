@@ -32,7 +32,7 @@ const Favorite = () => {
     });
   }, [user?.email]);
 
-  const productRef = doc(db, "users", `${user.email}`);
+  const productRef = doc(db, "users", `${user?.email}`);
   const deleteProduct = async (passedId) => {
     try {
       const result = products.filter((item) => item.id !== passedId);

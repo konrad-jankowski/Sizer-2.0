@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
 import Newsletter_message from "./Newsletter_message";
 
 const Newsletter = () => {

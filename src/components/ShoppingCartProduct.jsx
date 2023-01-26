@@ -3,10 +3,10 @@ import { RiCloseLine } from "react-icons/ri";
 import { ToggleAuth } from "../context/ToggleCardContext";
 import data from "../productsData";
 
-const ShoppingCartProduct = ({ id, quantity }) => {
-  const item = data.find((i) => i.id === id);
+const ShoppingCartProduct = (props) => {
+  const item = data.find((i) => i.id === props.id);
   if (item == null) return null;
-  const { formData, removeFromCart } = ToggleAuth();
+  const { removeFromCart } = ToggleAuth();
 
   return (
     <>
@@ -19,9 +19,7 @@ const ShoppingCartProduct = ({ id, quantity }) => {
           />
           <span>
             <h4 className="font-semibold text-sm">{item.model}</h4>
-            <p className="font-normal text-xs">
-              Rozmiar: {formData.productSize} {quantity}xSZT.
-            </p>
+            <p className="font-normal text-xs">Rozmiar: {quantity}xSZT.</p>
           </span>
         </div>
         <div className="flex flex-col gap-3 items-end">

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../components/Navbar";
-import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
 import data from "../productsData";
 
 let uniqueObjArray = [

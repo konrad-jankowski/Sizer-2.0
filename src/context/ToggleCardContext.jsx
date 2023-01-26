@@ -13,61 +13,20 @@ const ToggleCardContext = createContext();
 export function ToggleCardContextProvider({ children }) {
   const [toggle, setToggle] = useState(false);
   const [user, setUser] = useState({});
-  const [cartItems, setCartItems] = useState([]);
-  const [formData, setFormData] = useState({
-    productSize: "",
-  });
+  const [test, setTest] = useState([]);
 
-  // cart functions
-  const cartQuantity = cartItems.reduce(
-    (quantity, item) => item.quantity + quantity,
-    0
-  );
-
-  function getItemQuantity(id) {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
-  }
-  function increaseCartQuantity(id) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1 }];
-      } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity + 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  }
-  function decreaseCartQuantity(id) {
-    setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
-      } else {
-        return currItems.map((item) => {
-          if (item.id === id) {
-            return { ...item, quantity: item.quantity - 1 };
-          } else {
-            return item;
-          }
-        });
-      }
-    });
-  }
-  function removeFromCart(id) {
-    setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
-    });
-  }
-  // cart functions end
+  const quantityy = test
+    .map((product) => product.item.productSize)
+    .filter(function (element) {
+      return element !== undefined;
+    }).length;
 
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, "users", email), {
       savedFavorites: [],
+      shoppingCartItems: [],
+      orderHistory: [],
     });
   }
   function logIn(email, password) {
@@ -95,14 +54,9 @@ export function ToggleCardContextProvider({ children }) {
         logIn,
         logOut,
         user,
-        getItemQuantity,
-        increaseCartQuantity,
-        decreaseCartQuantity,
-        removeFromCart,
-        cartItems,
-        cartQuantity,
-        formData,
-        setFormData,
+        test,
+        setTest,
+        quantityy,
       }}
     >
       {children}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button_buy from "../components/Button_buy";
-import ShoppingCartEmpty from "../components/ShoppingCartEmpty";
 import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Registration = () => {

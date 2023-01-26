@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import React from "react";
+import { AiOutlinePlus } from "react-icons/ai";
 import Description_desciption from "./Description_description";
 import Description_pricing from "./Description_pricing";
 

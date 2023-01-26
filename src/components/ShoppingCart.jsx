@@ -1,27 +1,62 @@
-import React, { useState } from "react";
-import data from "../productsData";
+import React, { useEffect } from "react";
 import { RiCloseLine } from "react-icons/ri";
 import { ToggleAuth, useShoppingCart } from "../context/ToggleCardContext";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import Button_buy from "./Button_buy";
 import Button_favorite from "./Button_favorite";
 import ProductSlider from "./ProductSlider";
-import ShoppingCartProduct from "./ShoppingCartProduct";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  onSnapshot,
+  query,
+} from "firebase/firestore";
+import { db } from "../firebase";
+import ShoppingCartEmpty_button from "./ShoppingCartEmpty_button";
 
 const ShoppingCart = () => {
-  const { cartItems, cartQuantity } = useShoppingCart();
+  const { test, setTest, quantityy } = useShoppingCart();
   const { toggle, setToggle } = ToggleAuth();
-  const [newCart, setNewCart] = useState(cartItems);
 
   const slideLeft = () => {
     var slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft - 192;
-    console.log(slider);
   };
   const slideRight = () => {
     var slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft + 192;
+  };
+
+  useEffect(() => {
+    const q = query(collection(db, "shoppingCart"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let todosArr = [];
+      querySnapshot.forEach((doc) => {
+        todosArr.push({ ...doc.data(), id: doc.id });
+      });
+      setTest(todosArr);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const quantity = test
+    .map((product) => product.item.productSize)
+    .filter(function (element) {
+      return element !== undefined;
+    }).length;
+
+  const totalPrice = test.map((product) => {
+    if (product.item.productSize != undefined) return product.item.price;
+  });
+
+  const total = totalPrice.reduce(function (s, v) {
+    return s + (v || 0);
+  }, 0);
+
+  const deleteProduct = async (id) => {
+    await deleteDoc(doc(db, "shoppingCart", id));
   };
 
   return (
@@ -37,27 +72,78 @@ const ShoppingCart = () => {
         } `}
       >
         <div className="flex justify-between my-8 ">
-          <h2 className="font-bold text-xl ml-8">
-            TWÓJ KOSZYK ({cartQuantity})
-          </h2>
+          <h2 className="font-bold text-xl ml-8">TWÓJ KOSZYK ({quantityy})</h2>
           <RiCloseLine
             size={28}
             className="hover:text-[#f4811f] cursor-pointer"
             onClick={() => setToggle((prev) => !prev)}
           />
         </div>
-        {newCart.map((item) => (
-          <ShoppingCartProduct key={item.id} {...item} />
-        ))}
-        <h2 className="font-bold text-xl ml-8 text-end mr-10">
-          Łączna wartość:{" "}
-          {formatCurrencyLowercase(
-            newCart.reduce((total, cartItem) => {
-              const item = data.find((i) => i.id === cartItem.id);
-              return total + (item?.price || 0) * cartItem.quantity;
-            }, 0)
-          )}
-        </h2>
+        {quantityy === 0 ? (
+          <>
+            <img
+              className="mx-auto mt-8 w-[86px] h-[76px]"
+              src="https://sklep.sizeer.com/files/sizeer_pl/icons/bag.svg"
+              alt=""
+            />
+            <h2 className="text-[#b2b2b2] text-xl text-center mt-6">
+              TWÓJ KOSZYK JEST PUSTY
+            </h2>
+            <h2
+              className="font-bold text-xl tracking-wide mt-6 mb-1 w-[28vw]
+          "
+            >
+              SPRAWDŹ CO MAMY DO ZAOFEROWANIA:
+            </h2>
+            <div className="flex flex-col">
+              <ShoppingCartEmpty_button text={{ categoria: "SNEAKERSY" }} />
+              <ShoppingCartEmpty_button text={{ categoria: "TRAMPKI" }} />
+              <ShoppingCartEmpty_button text={{ categoria: "AKCESORIA" }} />
+            </div>
+          </>
+        ) : (
+          <>
+            {test.map((item) => {
+              if (item.item.productSize) {
+                return (
+                  <div
+                    key={item.id}
+                    className="flex justify-between items-end mb-3 pb-3 border-b"
+                  >
+                    <div className="flex items-center gap-2">
+                      <img
+                        className="w-[110px] h-[110px] object-contain"
+                        src={item.item.images[0]}
+                        alt={item.item.model}
+                      />
+                      <span>
+                        <h4 className="font-semibold text-sm">
+                          {item.item.model}
+                        </h4>
+                        <p className="font-normal text-xs">
+                          Rozmiar: {item.item.productSize}
+                        </p>
+                      </span>
+                    </div>
+                    <div className="flex flex-col gap-3 items-end">
+                      <RiCloseLine
+                        onClick={() => deleteProduct(item.id)}
+                        size={20}
+                        className="text-gray-400 hover:text-[#f4811f] cursor-pointer"
+                      />
+                      <h3 className="font-bold text-sm mr-7">
+                        {formatCurrencyLowercase(item.item.price)}
+                      </h3>
+                    </div>
+                  </div>
+                );
+              }
+            })}
+            <h2 className="font-bold text-xl ml-8 text-end mr-10">
+              Łączna wartość: {formatCurrencyLowercase(total)}
+            </h2>
+          </>
+        )}
 
         <h2
           className="text-center font-bold text-xl tracking-wide mt-6 mb-7

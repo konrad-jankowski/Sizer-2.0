@@ -11,6 +11,10 @@
   font-family: "Open Sans", sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .img_wrap {
   width: 80px;
   height: 80px;

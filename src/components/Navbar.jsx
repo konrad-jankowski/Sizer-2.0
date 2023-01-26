@@ -9,7 +9,7 @@ import { ToggleAuth, useShoppingCart } from "../context/ToggleCardContext";
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(true);
   const { user } = ToggleAuth();
-  const { cartQuantity } = useShoppingCart();
+  const { quantityy } = useShoppingCart();
 
   const changeNavbar = () => {
     if (window.scrollY >= 80) {
@@ -22,6 +22,17 @@ const Navbar = () => {
   window.addEventListener("scroll", changeNavbar);
 
   const { setToggle } = ToggleAuth();
+
+  const onClickHandler = () => {
+    setToggle((prev) => !prev);
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+    scrollToTop();
+  };
 
   return (
     <nav
@@ -82,12 +93,12 @@ const Navbar = () => {
           </li>
         )}
         <li
-          onClick={() => setToggle((prev) => !prev)}
+          onClick={() => onClickHandler((prev) => !prev)}
           className="relative flex flex-col items-center gap-1  hover:text-[#f4811f] cursor-pointer"
         >
           <HiOutlineShoppingBag className="relative" size={26} />
           <div className="absolute right-[6px] top-[-5px] bg-gray-300 h-[20px] w-[20px] flex justify-center items-center rounded-full text-xs  ">
-            {cartQuantity}
+            {quantityy}
           </div>
           {isSticky ? "KOSZYK" : null}
         </li>

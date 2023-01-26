@@ -1,6 +1,4 @@
-import { useState } from "react";
 import data from "../productsData";
-import Button_buy from "./Button_buy";
 
 let uniqueCategory = [
   ...new Map(data.map((item) => [item["category"], item])).values(),
@@ -42,7 +40,6 @@ const Filter = ({ filterResult, filterBrands, cleanResults }) => {
         <h3 className="font-semibold mb-1">Kategoria</h3>
         {uniqueCategory.map((item) => (
           <div key={item.id}>
-            {/* <input type="checkbox" id={item.category} name={item.category} /> */}
             <label
               onClick={() => filterResult(item.category)}
               className="cursor-pointer ml-2 select-none"
@@ -58,7 +55,6 @@ const Filter = ({ filterResult, filterBrands, cleanResults }) => {
         <h3 className="font-semibold my-1">Marki</h3>
         {sortedArrayBrands.map((item) => (
           <div key={item.id}>
-            {/* <input type="checkbox" id={item.brand} name={item.brand} /> */}
             <label
               onClick={() => filterBrands(item.brand)}
               className="cursor-pointer ml-2 select-none"
