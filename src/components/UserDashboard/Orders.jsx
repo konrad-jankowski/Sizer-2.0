@@ -15,27 +15,38 @@ const Orders = () => {
 
   const test = products.map((item) => item.matkaTeressa);
 
-  const test1 = test.map(item);
-
   return (
     <div>
-      <h2>Orders : </h2>
-      {/* <div>{products.length === 0 ? <h3>Brak zamówień</h3> : "elo"}</div> */}
+      <h2>Zamówienia </h2>
       <div>
-        {test.map((item, i) => {
-          return <p>{i}</p>;
-          {
-            item.map((item, index) => (
-              <div>
-                <p>{index + 1}</p>
-                <div>
-                  <p className="font-semibold">{item.model}</p> Size:{" "}
-                  {item.productSize}
+        {products.length === 0 ? (
+          <h3>Brak zamówień</h3>
+        ) : (
+          <div className="flex flex-col">
+            {test.map((item, i) => {
+              return (
+                <div className="mt-4">
+                  <p>Numer zamówienia {i + 1}:</p>
+                  <div>
+                    {item.map((item) => {
+                      return (
+                        <div className="flex items-center gap-3">
+                          <img
+                            className="w-[60px] h-[60px] object-contain mt-4"
+                            src={item.images[0]}
+                            alt=""
+                          />
+                          <h4>{item.model}</h4>
+                          <p>Rozmiar: {item.productSize}</p>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ));
-          }
-        })}
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

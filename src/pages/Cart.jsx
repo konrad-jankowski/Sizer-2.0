@@ -14,11 +14,15 @@ import {
 import { db } from "../firebase";
 
 const Cart = () => {
-  const { test, quantityy, user } = useShoppingCart();
+  const { test, setTest, quantityy, user } = useShoppingCart();
   const productId = doc(db, "users", `${user?.email}`);
 
   const deleteProduct = async (id) => {
     await deleteDoc(doc(db, "shoppingCart", id));
+  };
+
+  const deleteProductsFromFirebase = async () => {
+    await deleteDoc(doc(db, "shoppingCart", "item"));
   };
 
   const totalPrice = test.map((product) => {
@@ -35,8 +39,6 @@ const Cart = () => {
     return item.item;
   });
 
-  console.log(matkaTeressa);
-
   const finishOrder = async () => {
     if (user?.email) {
       await updateDoc(productId, {
@@ -47,6 +49,9 @@ const Cart = () => {
     } else {
       alert("Please log in to save a product");
     }
+    alert("Dziękujemy za złożenie zamówienia i zapraszamy ponowanie");
+    setTest([]);
+    deleteProductsFromFirebase();
   };
 
   return (
