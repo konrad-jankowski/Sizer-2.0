@@ -15,16 +15,28 @@ const Orders = () => {
 
   const test = products.map((item) => item.matkaTeressa);
 
-  console.log(
-    "Order list",
-    test[0].map((item) => item.model)
-  );
+  const test1 = test.map(item);
 
   return (
     <div>
-      <h2>Orders</h2>
+      <h2>Orders : </h2>
       {/* <div>{products.length === 0 ? <h3>Brak zamówień</h3> : "elo"}</div> */}
-      {/* <div>{products.map(item)}</div> */}
+      <div>
+        {test.map((item, i) => {
+          return <p>{i}</p>;
+          {
+            item.map((item, index) => (
+              <div>
+                <p>{index + 1}</p>
+                <div>
+                  <p className="font-semibold">{item.model}</p> Size:{" "}
+                  {item.productSize}
+                </div>
+              </div>
+            ));
+          }
+        })}
+      </div>
     </div>
   );
 };
