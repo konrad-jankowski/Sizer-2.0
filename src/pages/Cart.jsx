@@ -4,11 +4,18 @@ import { useShoppingCart } from "../context/ToggleCardContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import Button_favorite from "../components/Button_favorite";
-import { deleteDoc, doc } from "firebase/firestore";
+import {
+  arrayUnion,
+  deleteDoc,
+  doc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
 
 const Cart = () => {
-  const { test, quantityy } = useShoppingCart();
+  const { test, quantityy, user } = useShoppingCart();
+  const productId = doc(db, "users", `${user?.email}`);
 
   const deleteProduct = async (id) => {
     await deleteDoc(doc(db, "shoppingCart", id));
@@ -22,8 +29,28 @@ const Cart = () => {
     return s + (v || 0);
   }, 0);
 
+  const essa = test.filter((item) => item.item.productSize);
+
+  const matkaTeressa = essa.map((item) => {
+    return item.item;
+  });
+
+  console.log(matkaTeressa);
+
+  const finishOrder = async () => {
+    if (user?.email) {
+      await updateDoc(productId, {
+        orderHistory: arrayUnion({
+          matkaTeressa,
+        }),
+      });
+    } else {
+      alert("Please log in to save a product");
+    }
+  };
+
   return (
-    <div className="">
+    <div className=" min-h-[42.8vh]">
       {quantityy > 0 ? (
         <>
           <div className="flex mx-[9%] mb-2 mt-8">
@@ -65,7 +92,10 @@ const Cart = () => {
                 {formatCurrencyLowercase(total)}
               </p>
             </span>
-            <button className=" bg-orange-400 p-2 rounded mx-4 text-white  font-semibold">
+            <button
+              onClick={finishOrder}
+              className=" bg-orange-400 p-2 rounded mx-4 text-white  font-semibold"
+            >
               DALEJ
             </button>
           </div>
