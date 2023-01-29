@@ -9,6 +9,7 @@ const shoes = [
     rating: 4.8,
     ratingUsers: 7,
     sizes: [42, 41, 45.5],
+    sizerPoints: 240,
     images: [
       "https://sklep.sizeer.com/media/cache/gallery/rc/0ffvs8xj/nike-air-force-1-07-meskie-sneakersy-bialy-dx2660-001.jpg",
       "https://sklep.sizeer.com/media/cache/gallery/rc/xrldmebw/nike-air-force-1-07-meskie-sneakersy-bialy-dx2660-001_2.jpg",
@@ -33,7 +34,7 @@ const shoes = [
     ratingUsers: 23,
     discountFrom: 699.99,
     sizes: [42, 43, 44.5],
-
+    sizerPoints: 120,
     images: [
       "https://sklep.sizeer.com/media/cache/gallery/rc/lykwkh1b/nike-air-max-90-meskie-sneakersy-bialy-dq4071-100.jpg",
       "https://sklep.sizeer.com/media/cache/gallery/rc/xmgweshd/nike-air-max-90-meskie-sneakersy-bialy-dq4071-100_2.jpg",

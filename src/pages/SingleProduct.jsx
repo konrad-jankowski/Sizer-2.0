@@ -37,7 +37,6 @@ const SingleProduct = () => {
   const saveProduct = async () => {
     if (user?.email) {
       setSaved(true);
-      // alert("Dodano produkt do schowka");
       await updateDoc(productId, {
         savedFavorites: arrayUnion({
           id: item.id,
@@ -46,7 +45,7 @@ const SingleProduct = () => {
         }),
       });
     } else {
-      alert("Please log in to save a product");
+      alert("Zaloguj się by dodać do schowka!");
     }
   };
 
@@ -62,29 +61,41 @@ const SingleProduct = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    alert(`Dodano do koszyka rozmiar: ${formData.productSize}`);
-    const productSize = { productSize: formData.productSize };
-    setItem((prev) => {
-      const newArrayWithSize = { ...prev, ...productSize };
-      return newArrayWithSize;
-    });
-    setToggle(true);
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-    scrollToTop();
-  };
+    if (user?.email) {
+      const productSize = {
+        productSize: formData.productSize,
+        uuid: crypto.randomUUID(),
+      };
 
-  const addNewDoc = async () => {
-    await addDoc(collection(db, "shoppingCart"), {
-      item,
-    });
+      setItem((prev) => {
+        const newArrayWithSize = { ...prev, ...productSize };
+        return newArrayWithSize;
+      });
+      setToggle(true);
+      const scrollToTop = () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      };
+      scrollToTop();
+    } else {
+      alert("Zaloguj się lub zarejestruj!");
+    }
   };
 
   useEffect(() => {
+    const addNewDoc = async () => {
+      if (user?.email) {
+        await updateDoc(productId, {
+          shoppingCartItems: arrayUnion({
+            item,
+          }),
+        });
+      } else {
+        console.log("error");
+      }
+    };
     addNewDoc();
   }, [item]);
 
@@ -144,6 +155,12 @@ const SingleProduct = () => {
               </span>
               <ProcentageCalculator item={item} />
             </h3>
+          ) : null}
+          {item?.sizerPoints ? (
+            <p className="bg-[#f4811f] text-center text-white uppercase py-[6px] font-semibold mb-4 mt-8">
+              ✛ {item?.sizerPoints} pkt w{" "}
+              <span className="underline">sizeerclub</span>
+            </p>
           ) : null}
           <h3 className="font-semibold text-base text-gray-400">
             PRODUKT SPECJALNY

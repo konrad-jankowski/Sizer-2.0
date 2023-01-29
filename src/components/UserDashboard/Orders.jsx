@@ -13,31 +13,46 @@ const Orders = () => {
     });
   }, [user?.email]);
 
-  const test = products.map((item) => item.matkaTeressa);
+  const test = products?.map((item) => item.matkaTeressa);
 
   return (
     <div>
-      <h2>Zamówienia </h2>
+      <h2 className="text-gray-600">Zamówienia </h2>
       <div>
-        {products.length === 0 ? (
+        {products?.length === 0 ? (
           <h3>Brak zamówień</h3>
         ) : (
           <div className="flex flex-col">
-            {test.map((item, i) => {
+            {test?.map((item, i) => {
               return (
-                <div className="mt-4">
-                  <p>Numer zamówienia {i + 1}:</p>
+                <div className="mt-4" key={i}>
+                  <div className="flex items-center gap-2">
+                    Numer zamówienia{" "}
+                    <div className="w-7 h-7 text-white flex justify-center items-center rounded-full bg-[#f4811f]">
+                      {i + 1}
+                    </div>
+                  </div>
                   <div>
-                    {item.map((item) => {
+                    {item?.map((item) => {
                       return (
-                        <div className="flex items-center gap-3">
+                        <div
+                          className="flex items-center gap-3"
+                          key={item.uuid}
+                        >
                           <img
                             className="w-[60px] h-[60px] object-contain mt-4"
                             src={item.images[0]}
                             alt=""
                           />
-                          <h4>{item.model}</h4>
-                          <p>Rozmiar: {item.productSize}</p>
+                          <h4>
+                            <span className="font-medium">{item.model}</span>
+                          </h4>
+                          <p>
+                            Rozmiar:{" "}
+                            <span className="font-medium">
+                              {item.productSize}
+                            </span>
+                          </p>
                         </div>
                       );
                     })}

@@ -6,20 +6,14 @@ import Button_buy from "./Button_buy";
 import Button_favorite from "./Button_favorite";
 import ProductSlider from "./ProductSlider";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  query,
-} from "firebase/firestore";
+import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import ShoppingCartEmpty_button from "./ShoppingCartEmpty_button";
 import { Link } from "react-router-dom";
 
 const ShoppingCart = () => {
   const { test, setTest, quantityy } = useShoppingCart();
-  const { toggle, setToggle } = ToggleAuth();
+  const { toggle, setToggle, user } = ToggleAuth();
 
   const slideLeft = () => {
     var slider = document.getElementById(`slider`);
@@ -29,35 +23,30 @@ const ShoppingCart = () => {
     var slider = document.getElementById(`slider`);
     slider.scrollLeft = slider.scrollLeft + 192;
   };
-
   useEffect(() => {
-    const q = query(collection(db, "shoppingCart"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      let todosArr = [];
-      querySnapshot.forEach((doc) => {
-        todosArr.push({ ...doc.data(), id: doc.id });
-      });
-      setTest(todosArr);
+    onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
+      setTest(doc.data()?.shoppingCartItems);
     });
-    return () => unsubscribe();
-  }, []);
+  }, [user?.email]);
 
-  const quantity = test
-    .map((product) => product.item.productSize)
-    .filter(function (element) {
-      return element !== undefined;
-    }).length;
-
-  const totalPrice = test.map((product) => {
+  const totalPrice = test?.map((product) => {
     if (product.item.productSize != undefined) return product.item.price;
   });
 
-  const total = totalPrice.reduce(function (s, v) {
+  const total = totalPrice?.reduce(function (s, v) {
     return s + (v || 0);
   }, 0);
 
-  const deleteProduct = async (id) => {
-    await deleteDoc(doc(db, "shoppingCart", id));
+  const productRef = doc(db, "users", `${user?.email}`);
+  const deleteProduct = async (passedId) => {
+    try {
+      const result = test.filter((item) => item.item.uuid !== passedId);
+      await updateDoc(productRef, {
+        shoppingCartItems: result,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -104,11 +93,11 @@ const ShoppingCart = () => {
           </>
         ) : (
           <>
-            {test.map((item) => {
+            {test?.map((item) => {
               if (item.item.productSize) {
                 return (
                   <div
-                    key={item.id}
+                    key={item.item.uuid}
                     className="flex justify-between items-end mb-3 pb-3 border-b"
                   >
                     <div className="flex items-center gap-2">
@@ -128,7 +117,7 @@ const ShoppingCart = () => {
                     </div>
                     <div className="flex flex-col gap-3 items-end">
                       <RiCloseLine
-                        onClick={() => deleteProduct(item.id)}
+                        onClick={() => deleteProduct(item.item.uuid)}
                         size={20}
                         className="text-gray-400 hover:text-[#f4811f] cursor-pointer"
                       />

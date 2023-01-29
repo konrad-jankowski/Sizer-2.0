@@ -11,7 +11,7 @@ const UserDashboard = () => {
     "pulpit",
     "zamówienia",
     // "książka adresowa",
-    // "SIZEERCLUB",
+    "sizerclub",
     // "ustawienia",
     "schowek",
   ];

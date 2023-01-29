@@ -4,38 +4,42 @@ import { useShoppingCart } from "../context/ToggleCardContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import Button_favorite from "../components/Button_favorite";
-import {
-  arrayUnion,
-  deleteDoc,
-  doc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Cart = () => {
   const { test, setTest, quantityy, user } = useShoppingCart();
   const productId = doc(db, "users", `${user?.email}`);
 
-  const deleteProduct = async (id) => {
-    await deleteDoc(doc(db, "shoppingCart", id));
+  const productRef = doc(db, "users", `${user?.email}`);
+  const deleteProduct = async (passedId) => {
+    try {
+      const result = test.filter((item) => item.item.uuid !== passedId);
+      await updateDoc(productRef, {
+        shoppingCartItems: result,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteProductsFromFirebase = async () => {
-    await deleteDoc(doc(db, "shoppingCart", "item"));
+    await updateDoc(productId, {
+      shoppingCartItems: [],
+    });
   };
 
-  const totalPrice = test.map((product) => {
+  const totalPrice = test?.map((product) => {
     if (product.item.productSize != undefined) return product.item.price;
   });
 
-  const total = totalPrice.reduce(function (s, v) {
+  const total = totalPrice?.reduce(function (s, v) {
     return s + (v || 0);
   }, 0);
 
-  const essa = test.filter((item) => item.item.productSize);
+  const essa = test?.filter((item) => item.item.productSize);
 
-  const matkaTeressa = essa.map((item) => {
+  const matkaTeressa = essa?.map((item) => {
     return item.item;
   });
 
@@ -63,10 +67,13 @@ const Cart = () => {
             <p className=" ml-[10%]">Cena</p>
           </div>
           <div className="border-t mb-10  mx-[9%]">
-            {test.map((item) => {
+            {test?.map((item) => {
               if (item.item.productSize) {
                 return (
-                  <div className="flex items-center border-b py-4 ">
+                  <div
+                    className="flex items-center border-b py-4"
+                    key={item.item.uuid}
+                  >
                     <img
                       className="w-[110px] h-[110px] object-contain mr-[10%]"
                       src={item.item.images[0]}
@@ -80,8 +87,8 @@ const Cart = () => {
                       {formatCurrencyLowercase(item.item.price)}
                     </h3>
                     <RiDeleteBin6Line
-                      className="cursor-pointer"
-                      onClick={() => deleteProduct(item.id)}
+                      className="cursor-pointer hover:text-[#f4811f]"
+                      onClick={() => deleteProduct(item.item.uuid)}
                     />
                   </div>
                 );
@@ -93,7 +100,7 @@ const Cart = () => {
             <hr />
             <span className="flex justify-between items-center font-medium px-10">
               <p>Kwota do zapłaty: </p>
-              <p className="text-orange-400 font-semibold text-xl">
+              <p className="text-[#f4811f] font-semibold text-xl">
                 {formatCurrencyLowercase(total)}
               </p>
             </span>

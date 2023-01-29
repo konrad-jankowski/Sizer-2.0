@@ -8,8 +8,8 @@ const Favorite = () => {
   const [products, setProducts] = useState([]);
   const { user } = ToggleAuth();
 
-  const renderProducts = products.map((item) => (
-    <div className="mt-4 flex flex-col gap-1" key={item.id}>
+  const renderProducts = products?.map((item) => (
+    <div className="mt-4 flex flex-col items-center gap-1" key={item.id}>
       <Link to={`${item.id}`}>
         <img
           className="w-[130px] h-[130px] object-contain cursor-pointer"
@@ -22,9 +22,15 @@ const Favorite = () => {
       </Link>
       <button
         onClick={() => deleteProduct(item.id)}
-        className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2  py-1  font-semibold hover:bg-[#c96c1a] uppercase"
+        className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2  py-2 px-4  font-semibold hover:bg-[#c96c1a] uppercase"
       >
-        usuń
+        do koszyka
+      </button>
+      <button
+        onClick={() => deleteProduct(item.id)}
+        className="bg-[black] text-white rounded-sm flex items-center justify-center gap-2  py-2 px-2 text-sm  font-semibold hover:bg-black/80 uppercase"
+      >
+        usuń ze schowka
       </button>
     </div>
   ));
@@ -37,6 +43,8 @@ const Favorite = () => {
 
   const productRef = doc(db, "users", `${user?.email}`);
   const deleteProduct = async (passedId) => {
+    console.log(passedId);
+
     try {
       const result = products.filter((item) => item.id !== passedId);
       await updateDoc(productRef, {
@@ -49,8 +57,8 @@ const Favorite = () => {
 
   return (
     <div>
-      <h2>Ulubione</h2>
-      <p>{products.length ? "" : "Pusto"}</p>
+      <h2 className="text-gray-600">Ulubione</h2>
+      <p>{products?.length ? "" : "Pusto"}</p>
       <div className="flex gap-4">{renderProducts}</div>
     </div>
   );

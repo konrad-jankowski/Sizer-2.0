@@ -14,6 +14,7 @@ import Favorite from "./components/UserDashboard/Favorite";
 import Orders from "./components/UserDashboard/Orders";
 import Screen from "./components/UserDashboard/Screen";
 import Cart from "./pages/Cart";
+import SizerClub from "./components/UserDashboard/SizerClub";
 
 function App() {
   return (
@@ -21,13 +22,14 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Navbar />
-        <ShoppingCart />
+        {<ShoppingCart />}
         <Routes>
           <Route path="/" element={<Main_grid />} />
           <Route path="/login" element={<Login />} />
           <Route path="/rejestracja" element={<Registration />} />
           <Route path="/profil" element={<UserDashboard />}>
             <Route path="pulpit" element={<Screen />} />
+            <Route path="sizerclub" element={<SizerClub />} />
             <Route path="schowek" element={<Favorite />} />
             <Route path="zamówienia" element={<Orders />} />
           </Route>

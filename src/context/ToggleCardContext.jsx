@@ -15,11 +15,12 @@ export function ToggleCardContextProvider({ children }) {
   const [user, setUser] = useState({});
   const [test, setTest] = useState([]);
 
-  const quantityy = test
-    .map((product) => product.item.productSize)
-    .filter(function (element) {
-      return element !== undefined;
-    }).length;
+  const quantityy =
+    test
+      ?.map((product) => product.item.productSize)
+      .filter(function (element) {
+        return element !== undefined;
+      }).length || 0;
 
   function signUp(email, password) {
     createUserWithEmailAndPassword(auth, email, password);
