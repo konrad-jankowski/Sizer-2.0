@@ -3,9 +3,12 @@ import { ToggleAuth } from "../../context/ToggleCardContext";
 import { db } from "../../firebase";
 import { updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { Link } from "react-router-dom";
+import GridLoader from "react-spinners/GridLoader";
 
 const Favorite = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const { user } = ToggleAuth();
 
   const renderProducts = products?.map((item) => (
@@ -36,8 +39,10 @@ const Favorite = () => {
   ));
 
   useEffect(() => {
+    setLoading(true);
     onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
       setProducts(doc.data()?.savedFavorites);
+      setLoading(false);
     });
   }, [user?.email]);
 
@@ -58,8 +63,19 @@ const Favorite = () => {
   return (
     <div>
       <h2 className="text-gray-600">Ulubione</h2>
-      <p>{products?.length ? "" : "Pusto"}</p>
-      <div className="flex gap-4">{renderProducts}</div>
+      {loading ? (
+        <div className=" h-[200px] flex justify-center items-center">
+          <GridLoader color="orange" size={16} />
+        </div>
+      ) : (
+        <>
+          {products?.length ? (
+            <div className="flex gap-4">{renderProducts}</div>
+          ) : (
+            <p>Pusto</p>
+          )}
+        </>
+      )}
     </div>
   );
 };
