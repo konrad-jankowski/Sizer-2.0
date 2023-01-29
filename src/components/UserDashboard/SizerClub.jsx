@@ -37,14 +37,23 @@ const SizerClub = () => {
           <h3>Brak punktów</h3>
         ) : (
           <>
-            <div className="bg-[#f4811f] text-white text-center py-1 mt-6 font-medium text-lg">
+            <div className=" bg-[#f4811f] text-white text-center py-1 mt-6 font-medium text-lg">
               {totalPoints} PKT
             </div>
             <div
-              className="bg-black mt-10 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex items-center justify-center ;
+              className="relative bg-black mt-10 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex items-center justify-center cursor-pointer ;
 "
             >
               <img className="w-[82%] object-contain " src={sizerClub} alt="" />
+              <div
+                className="absolute top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex items-center justify-center   ;
+"
+              >
+                <p className="text-xl font-semibold text-center">
+                  {totalPoints}
+                  <br /> PUNKTÓW
+                </p>
+              </div>
             </div>
           </>
         )}
