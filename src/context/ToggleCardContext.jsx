@@ -15,6 +15,14 @@ export function ToggleCardContextProvider({ children }) {
   const [toggle, setToggle] = useState(false);
   const [user, setUser] = useState({});
   const [test, setTest] = useState([]);
+  const [inputData, setInputData] = useState([
+    {
+      firstName: "",
+      email: "",
+      password: "",
+      url: "",
+    },
+  ]);
 
   const quantityy =
     test
@@ -45,8 +53,8 @@ export function ToggleCardContextProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       updateProfile(user, {
-        displayName: "JASIU",
-        photoURL: "url",
+        displayName: inputData.firstName,
+        photoURL: inputData.url,
       })
         .then(() => {
           console.log("good");
@@ -72,6 +80,8 @@ export function ToggleCardContextProvider({ children }) {
         test,
         setTest,
         quantityy,
+        inputData,
+        setInputData,
       }}
     >
       {children}

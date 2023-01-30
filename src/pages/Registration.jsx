@@ -5,16 +5,9 @@ import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Registration = () => {
   const [message, setMessage] = useState(true);
-  const [inputData, setInputData] = useState([
-    {
-      firstName: "",
-      email: "",
-      password: "",
-      url: "",
-    },
-  ]);
+
   const [showPassword, setShowPassword] = useState(false);
-  const { signUp } = ToggleAuth();
+  const { signUp, inputData, setInputData } = ToggleAuth();
   const navigate = useNavigate();
 
   const togglePassword = () => {
