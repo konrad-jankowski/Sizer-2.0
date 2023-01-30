@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { setDoc, doc } from "firebase/firestore";
@@ -22,14 +23,17 @@ export function ToggleCardContextProvider({ children }) {
         return element !== undefined;
       }).length || 0;
 
-  function signUp(email, password) {
-    createUserWithEmailAndPassword(auth, email, password);
+  async function signUp(email, password) {
+    await createUserWithEmailAndPassword(auth, email, password);
     setDoc(doc(db, "users", email), {
       savedFavorites: [],
       shoppingCartItems: [],
       orderHistory: [],
     });
   }
+
+  console.log(user);
+
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
@@ -40,6 +44,16 @@ export function ToggleCardContextProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      updateProfile(user, {
+        displayName: "JASIU",
+        photoURL: "url",
+      })
+        .then(() => {
+          console.log("good");
+        })
+        .catch((error) => {
+          console.log("An error occurred");
+        });
     });
     return () => {
       unsubscribe();

@@ -103,7 +103,7 @@ const SingleProduct = () => {
     <>
       <ScrollToTopButton />
       <BannerSlider />
-      <div className="flex mx-[8%] mt-10 mb-20" key={item.id}>
+      <div className="flex mx-[8%] mt-10 mb-20" key={item?.id}>
         <div className="flex-1   mr-20">
           <p className="mt-4 mb-10 flex gap-2 items-center text-sm font-medium  ">
             SIZEER <SlArrowRight fill="#f4811f" /> {item?.category}{" "}
@@ -122,7 +122,7 @@ const SingleProduct = () => {
                   {item?.rating}
                 </span>
                 <span className="text-xs text-gray-500 font-semibold">
-                  ( {item.ratingUsers} )
+                  ( {item?.ratingUsers} )
                 </span>
               </div>
               <p className="text-xs text-gray-500 mb-1">
@@ -170,7 +170,7 @@ const SingleProduct = () => {
           </h4>
           <form onSubmit={handleSubmit}>
             <div className="flex mt-2 mb-6">
-              {item.sizes.map((size) => (
+              {item?.sizes.map((size) => (
                 <label key={size} className="label" htmlFor={size}>
                   <input
                     required

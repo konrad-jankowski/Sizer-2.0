@@ -7,12 +7,14 @@ const Registration = () => {
   const [message, setMessage] = useState(true);
   const [inputData, setInputData] = useState([
     {
+      firstName: "",
       email: "",
       password: "",
+      url: "",
     },
   ]);
   const [showPassword, setShowPassword] = useState(false);
-  const { user, signUp } = ToggleAuth();
+  const { signUp } = ToggleAuth();
   const navigate = useNavigate();
 
   const togglePassword = () => {
@@ -29,7 +31,6 @@ const Registration = () => {
     e.preventDefault();
     try {
       await signUp(inputData.email, inputData.password);
-      // alert(`Witaj ${inputData.email}`);
       setMessage(false);
       setTimeout(() => {
         navigate("/profil/pulpit");
@@ -38,6 +39,7 @@ const Registration = () => {
       console.log(error);
     }
   };
+  console.log(inputData);
 
   const handleChange = (e) => {
     setInputData((prevFormData) => {
@@ -64,9 +66,12 @@ const Registration = () => {
                   </label>
                   <input
                     className="border border-gray-300 py-1  outline-none pl-2 text-sm rounded-sm w-[400px]"
+                    onChange={handleChange}
+                    value={inputData.firstName}
                     type="text"
                     id="firstName"
                     name="firstName"
+                    placeholder="Jan"
                     required
                   />
                 </span>
@@ -79,6 +84,7 @@ const Registration = () => {
                     type="text"
                     id="secondName"
                     name="secondName"
+                    placeholder="Nowak"
                   />
                 </span>
                 <span className="flex items-center">
@@ -92,6 +98,7 @@ const Registration = () => {
                     type="email"
                     id="email"
                     name="email"
+                    placeholder="nowak@wp.pl"
                     required
                   />
                 </span>
@@ -135,6 +142,21 @@ const Registration = () => {
                     type="phone"
                     id="phone"
                     name="phone"
+                    placeholder="+48 712 321 321"
+                  />
+                </span>
+                <span className="flex items-center relative">
+                  <label className="cursor-pointer mr-2" htmlFor="url">
+                    Zdjęcie profilowe
+                  </label>
+                  <input
+                    className="border border-gray-300 py-1  outline-none pl-2 text-sm rounded-sm w-[400px]"
+                    onChange={handleChange}
+                    value={inputData.url}
+                    type="url"
+                    id="url"
+                    name="url"
+                    placeholder="https://example.com"
                   />
                 </span>
               </div>

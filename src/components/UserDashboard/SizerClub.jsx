@@ -6,6 +6,7 @@ import sizerClub from "../../images/sizerclub.png";
 
 const SizerClub = () => {
   const [products, setProducts] = useState([]);
+  const [flip, setFlip] = useState(false);
   const { user } = ToggleAuth();
 
   useEffect(() => {
@@ -31,28 +32,28 @@ const SizerClub = () => {
 
   return (
     <div>
-      <h2 className="text-gray-600">Punkty w clubie sizer: </h2>
+      <h2 className="text-gray-600">Punkty w clubie sizer</h2>
       <div>
         {products?.length === 0 ? (
           <h3>Brak punktów</h3>
         ) : (
           <>
-            <div className=" bg-[#f4811f] text-white text-center py-1 mt-6 font-medium text-lg">
-              {totalPoints} PKT
-            </div>
             <div
-              className="relative bg-black mt-10 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex items-center justify-center cursor-pointer ;
-"
+              onClick={() => setFlip((prev) => !prev)}
+              className="relative bg-black mt-4 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex flex-col items-center justify-center cursor-pointer"
             >
               <img className="w-[82%] object-contain " src={sizerClub} alt="" />
+              <p>Dotknij by zobaczyć</p>
               <div
-                className="absolute top-0 left-0 right-0 bg-gradient-to-r from-cyan-500 to-blue-500 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex items-center justify-center   ;
-"
+                className={`top-0 left-0 right-0 bg-gradient-to-b from-[#f4811f] to-[#bd783b] text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex items-center justify-center font-normal ${
+                  flip ? "absolute" : "hidden"
+                }`}
               >
-                <p className="text-xl font-semibold text-center">
-                  {totalPoints}
-                  <br /> PUNKTÓW
-                </p>
+                <div className="text-center leading-8">
+                  <span className="noto text-3xl ">{totalPoints}</span>
+                  <br />
+                  <p className="noto text-xl font-semibold">PUNKTÓW</p>
+                </div>
               </div>
             </div>
           </>

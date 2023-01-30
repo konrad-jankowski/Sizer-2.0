@@ -7,14 +7,7 @@ const UserDashboard = () => {
   const { logOut } = ToggleAuth();
   const navigate = useNavigate();
 
-  const dashbordLinks = [
-    "pulpit",
-    "zamówienia",
-    // "książka adresowa",
-    "sizerclub",
-    // "ustawienia",
-    "schowek",
-  ];
+  const dashbordLinks = ["pulpit", "zamówienia", "sizerclub", "schowek"];
 
   let activeClassName =
     "relative  before:absolute before:left-0 before:top-0 before:h-full before:w-1  before:bg-black border-t uppercase py-2 pl-12 bg-gray-200 text-black";
@@ -55,13 +48,14 @@ const UserDashboard = () => {
           </ul>
         </nav>
         <main className="flex-1">
-          <div className="flex justify-between w-full">
-            <h2 className="font-semibold text-xl">
+          <div className="flex justify-between items-center w-full">
+            <h2 className="font-semibold text-xl  flex-1">
               TWOJE KONTO (tu zrobić link){" "}
             </h2>
+
             <button
               onClick={handleLogout}
-              className="bg-black hover:bg-black/80 text-sm font-semibold text-white rounded-sm flex items-center justify-center gap-2 px-6 py-2 uppercase"
+              className="bg-black hover:bg-black/80 text-sm font-semibold text-white rounded-sm flex items-center justify-center gap-2 px-6 py-2 uppercase "
             >
               wyloguj się
             </button>
