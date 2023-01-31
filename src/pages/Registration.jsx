@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button_buy from "../components/Button_buy";
+import Error from "../components/Error";
 import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Registration = () => {
   const [message, setMessage] = useState(true);
-
+  const [error, setError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { signUp, inputData, setInputData } = ToggleAuth();
   const navigate = useNavigate();
@@ -30,6 +31,10 @@ const Registration = () => {
       }, 4000);
     } catch (error) {
       console.log(error);
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
     }
   };
   console.log(inputData);
@@ -153,6 +158,7 @@ const Registration = () => {
                   />
                 </span>
               </div>
+              <Error error={error} addStyle={"mr-10"} />
               <span className="text-gray-600 text-xs mb-2 place-self-start select-none">
                 <div className="flex items-center">
                   <input type="checkbox" id="remember" name="remember" />

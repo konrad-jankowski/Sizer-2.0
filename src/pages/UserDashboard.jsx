@@ -1,11 +1,12 @@
 import React from "react";
 import { Outlet, useNavigate } from "react-router";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { ToggleAuth } from "../context/ToggleCardContext";
 
 const UserDashboard = () => {
   const { logOut } = ToggleAuth();
   const navigate = useNavigate();
+  const urlParam = decodeURI(window.location.pathname);
 
   const dashbordLinks = ["pulpit", "zamówienia", "sizerclub", "schowek"];
 
@@ -49,8 +50,8 @@ const UserDashboard = () => {
         </nav>
         <main className="flex-1">
           <div className="flex justify-between items-center w-full">
-            <h2 className="font-semibold text-xl  flex-1">
-              TWOJE KONTO (tu zrobić link){" "}
+            <h2 className="font-semibold text-xl  flex-1 uppercase">
+              twoje konto - {urlParam.slice(8)}
             </h2>
 
             <button

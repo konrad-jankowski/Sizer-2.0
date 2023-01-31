@@ -40,8 +40,6 @@ export function ToggleCardContextProvider({ children }) {
     });
   }
 
-  console.log(user);
-
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }

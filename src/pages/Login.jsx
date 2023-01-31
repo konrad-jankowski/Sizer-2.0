@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button_buy from "../components/Button_buy";
+import Error from "../components/Error";
 import { ToggleAuth } from "../context/ToggleCardContext";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(false);
   const [inputData, setInputData] = useState([
     {
       email: "",
@@ -32,6 +34,10 @@ const Login = () => {
       navigate("/profil/pulpit");
     } catch (error) {
       console.log(error);
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 2000);
     }
   };
 
@@ -90,6 +96,7 @@ const Login = () => {
                   {showPassword ? "Ukryj" : "Pokaż"}
                 </p>
               </span>
+              <Error error={error} />
               <span className="flex justify-between w-[400px] text-gray-400 text-sm mb-2">
                 <div>
                   <input type="checkbox" id="remember" name="remember" />

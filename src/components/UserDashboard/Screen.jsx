@@ -22,11 +22,13 @@ const Screen = () => {
           }}
         />
       </div>
-      <img
-        className=" rounded-full w-[80px] h-[80px] object-cover"
-        src={user.photoURL}
-        alt=""
-      />
+      {user?.photoURL ? (
+        <img
+          className="p-1   bg-gradient-to-r from-orange-400 to-blue-600 shadow-lg rounded-full w-[100px] h-[100px] object-cover"
+          src={user.photoURL}
+          alt="profile picture"
+        />
+      ) : null}
     </div>
   );
 };

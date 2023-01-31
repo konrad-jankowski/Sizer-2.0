@@ -72,7 +72,9 @@ const Favorite = () => {
           {products?.length ? (
             <div className="flex gap-4">{renderProducts}</div>
           ) : (
-            <p>Pusto</p>
+            <p className="bg-[#d9edf7] text-[#31708f] text-center py-1 text-sm">
+              Nie posiadasz jeszcze produktów w schowku
+            </p>
           )}
         </>
       )}

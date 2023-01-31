@@ -35,12 +35,14 @@ const SizerClub = () => {
       <h2 className="text-gray-600">Punkty w clubie sizer</h2>
       <div>
         {products?.length === 0 ? (
-          <h3>Brak punktów</h3>
+          <p className="bg-[#d9edf7] text-[#31708f] text-center py-1 text-sm">
+            Nie posiadasz jeszcze punktów w clubie sizer
+          </p>
         ) : (
           <>
             <div
               onClick={() => setFlip((prev) => !prev)}
-              className="relative bg-black mt-4 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex flex-col items-center justify-center cursor-pointer"
+              className="relative bg-black mt-4 text-white h-[300px] w-[200px] rounded-lg overflow-hidden flex flex-col items-center justify-center cursor-pointer shadow-2xl"
             >
               <img className="w-[82%] object-contain " src={sizerClub} alt="" />
               <p>Dotknij by zobaczyć</p>

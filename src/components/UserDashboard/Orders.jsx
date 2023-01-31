@@ -1,5 +1,6 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { ToggleAuth } from "../../context/ToggleCardContext";
 import { db } from "../../firebase";
 
@@ -20,7 +21,9 @@ const Orders = () => {
       <h2 className="text-gray-600">Zamówienia </h2>
       <div>
         {products?.length === 0 ? (
-          <h3>Brak zamówień</h3>
+          <p className="bg-[#d9edf7] text-[#31708f] text-center py-1 text-sm">
+            Nie złożyłeś jeszcze zamówienia w naszym sklepie
+          </p>
         ) : (
           <div className="flex flex-col">
             {test?.map((item, i) => {
