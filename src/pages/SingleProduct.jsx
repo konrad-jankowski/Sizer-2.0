@@ -15,13 +15,8 @@ import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import { ToggleAuth } from "../context/ToggleCardContext";
 import { db } from "../firebase";
-import {
-  arrayUnion,
-  doc,
-  updateDoc,
-  addDoc,
-  collection,
-} from "firebase/firestore";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import OthersLookFor from "../components/OthersLookFor";
 
 const SingleProduct = () => {
   const [saved, setSaved] = useState(false);
@@ -216,6 +211,7 @@ const SingleProduct = () => {
           <Description item={item} />
         </div>
       </div>
+      <OthersLookFor />
       <LogoSlider />
     </>
   );

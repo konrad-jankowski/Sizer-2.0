@@ -15,6 +15,7 @@ import Orders from "./components/UserDashboard/Orders";
 import Screen from "./components/UserDashboard/Screen";
 import Cart from "./pages/Cart";
 import SizerClub from "./components/UserDashboard/SizerClub";
+import ShoppingCartStatus from "./components/UserDashboard/ShoppingCartStatus";
 
 function App() {
   return (

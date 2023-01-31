@@ -10,6 +10,7 @@ import { doc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import ShoppingCartEmpty_button from "./ShoppingCartEmpty_button";
 import { Link } from "react-router-dom";
+import ShoppingCartStatus from "./UserDashboard/ShoppingCartStatus";
 
 const ShoppingCart = () => {
   const { test, setTest, quantityy } = useShoppingCart();
@@ -51,6 +52,7 @@ const ShoppingCart = () => {
 
   return (
     <>
+      <ShoppingCartStatus total={total} />
       <div
         className={`absolute top-0 left-0 bg-black/80 w-full h-[226.4vh] z-10 ${
           toggle ? "" : "hidden"

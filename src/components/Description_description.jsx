@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const Description_desciption = ({ item }) => {
-  const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(true);
 
   const toggleHandler = () => {
     setToggle((prev) => !prev);

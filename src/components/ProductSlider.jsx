@@ -2,12 +2,16 @@ import React from "react";
 import data from "../productsData";
 
 const ProductSlider = () => {
+  const shuffle = data
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
   return (
     <div
       id="slider"
       className="mt-2 w-[352px] m-auto overflow-x-scroll whitespace-nowrap scroll-smooth overflow-y-clip relative"
     >
-      {data.map((item) => (
+      {shuffle.map((item) => (
         <div key={item.id} className="inline-block">
           <img
             className="w-[160px] h-[160px] mr-8 cursor-pointer"
