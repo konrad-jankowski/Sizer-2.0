@@ -13,7 +13,9 @@ const Orders = () => {
     });
   }, [user?.email]);
 
-  const test = products?.map((item) => item.matkaTeressa);
+  const mappedProducts = products?.map((item) => {
+    return { ...item };
+  });
 
   return (
     <div>
@@ -25,7 +27,7 @@ const Orders = () => {
           </p>
         ) : (
           <div className="flex flex-col">
-            {test?.map((item, i) => {
+            {mappedProducts?.map((item, i) => {
               return (
                 <div className="mt-4" key={i}>
                   <div className="flex items-center gap-2">
@@ -33,9 +35,11 @@ const Orders = () => {
                     <div className="w-7 h-7 text-white flex justify-center items-center rounded-full bg-[#f4811f]">
                       {i + 1}
                     </div>
+                    Data: <p className="underline">{item.date}</p>
                   </div>
                   <div>
-                    {item?.map((item) => {
+                    {" "}
+                    {item.order?.map((item) => {
                       return (
                         <div
                           className="flex items-center gap-3"

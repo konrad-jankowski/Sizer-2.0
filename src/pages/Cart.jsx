@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useShoppingCart } from "../context/ToggleCardContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -6,6 +6,7 @@ import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import Button_favorite from "../components/Button_favorite";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
+import { useEffect } from "react";
 
 const Cart = () => {
   const { test, setTest, quantityy, user } = useShoppingCart();
@@ -37,19 +38,18 @@ const Cart = () => {
     return s + (v || 0);
   }, 0);
 
-  const essa = test?.filter((item) => item.item.productSize);
+  const productsWithSize = test?.filter((item) => item.item.productSize);
 
-  const matkaTeressa = essa?.map((item) => {
+  const order = productsWithSize?.map((item) => {
     return item.item;
   });
-
-  console.log("matkaTeressa", matkaTeressa);
 
   const finishOrder = async () => {
     if (user?.email) {
       await updateDoc(productId, {
         orderHistory: arrayUnion({
-          matkaTeressa,
+          order,
+          date: new Date().toISOString().split("T")[0],
         }),
       });
     } else {

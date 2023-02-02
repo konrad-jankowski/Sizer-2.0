@@ -62,7 +62,6 @@ const SingleProduct = () => {
       const productSize = {
         productSize: formData.productSize,
         uuid: crypto.randomUUID(),
-        createdAt: new Date().toISOString().split("T")[0],
       };
 
       setItem((prev) => {
