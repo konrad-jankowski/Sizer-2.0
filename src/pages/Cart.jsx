@@ -43,6 +43,8 @@ const Cart = () => {
     return item.item;
   });
 
+  console.log("matkaTeressa", matkaTeressa);
+
   const finishOrder = async () => {
     if (user?.email) {
       await updateDoc(productId, {

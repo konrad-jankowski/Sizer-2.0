@@ -28,6 +28,7 @@ const SingleProduct = () => {
   const [formData, setFormData] = useState({
     productSize: "",
   });
+  const [sizeError, setSizeError] = useState(false);
 
   const saveProduct = async () => {
     if (user?.email) {
@@ -52,6 +53,7 @@ const SingleProduct = () => {
         [name]: type === "checkbox" ? checked : value,
       };
     });
+    setSizeError(false);
   }
 
   const handleSubmit = async (e) => {
@@ -60,6 +62,7 @@ const SingleProduct = () => {
       const productSize = {
         productSize: formData.productSize,
         uuid: crypto.randomUUID(),
+        createdAt: new Date().toISOString().split("T")[0],
       };
 
       setItem((prev) => {
@@ -157,18 +160,21 @@ const SingleProduct = () => {
               <span className="underline">sizeerclub</span>
             </p>
           ) : null}
-          <h3 className="font-semibold text-base text-gray-400">
-            PRODUKT SPECJALNY
-          </h3>
           <h4 className="font-bold text-xs mt-2 mb-4 hover:underline cursor-pointer w-fit ">
             {item?.category}
           </h4>
           <form onSubmit={handleSubmit}>
-            <div className="flex mt-2 mb-6">
+            <div className="flex mt-2 mb-6 relative">
+              {sizeError ? (
+                <p className="uppercase absolute bottom-[68px] bg-white px-8 font-medium py-3 top--10 border-2 border-red-600 text-xs after:content-[''] after:border-x-[10px] after:border-t-[10px] after:border-t-red-600 after:border-x-transparent after:border-b-[10px] after:border-b-transparent after:top-10 after:left-[50%] after:translate-x-[-50%] after:absolute ">
+                  Wybierz rozmiar
+                </p>
+              ) : null}
               {item?.sizes.map((size) => (
                 <label key={size} className="label" htmlFor={size}>
                   <input
                     required
+                    onInvalid={() => setSizeError(true)}
                     type="radio"
                     id={size}
                     name="productSize"
@@ -211,7 +217,8 @@ const SingleProduct = () => {
           <Description item={item} />
         </div>
       </div>
-      <OthersLookFor />
+      <OthersLookFor text={"INNI KLIENCI SPRAWDZILI RÓWNIEŻ"} />
+      <OthersLookFor text={"INNI KLIENCI KUPILI RÓWNIEŻ"} />
       <LogoSlider />
     </>
   );

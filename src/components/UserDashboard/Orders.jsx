@@ -1,6 +1,5 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { ToggleAuth } from "../../context/ToggleCardContext";
 import { db } from "../../firebase";
 
@@ -56,6 +55,7 @@ const Orders = () => {
                               {item.productSize}
                             </span>
                           </p>
+                          <p>{item.createdAt}</p>
                         </div>
                       );
                     })}
