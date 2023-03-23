@@ -46,6 +46,9 @@ const Filter = ({ filterResult, filterBrands, cleanResults }) => {
           <div key={item.id}>
             <label
               onClick={() => {
+                if (activeBrand !== "") {
+                  setActiveBrand("");
+                }
                 filterResult(item.category), setActive(item.category);
               }}
               className={`cursor-pointer ml-2 select-none ${

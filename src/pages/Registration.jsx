@@ -7,7 +7,9 @@ import { ToggleAuth } from "../context/ToggleCardContext";
 const Registration = () => {
   const [message, setMessage] = useState(true);
   const [error, setError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [password2, setPassword2] = useState("");
   const { signUp, inputData, setInputData } = ToggleAuth();
   const navigate = useNavigate();
 
@@ -21,14 +23,22 @@ const Registration = () => {
       setShowPassword(false);
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signUp(inputData.email, inputData.password);
-      setMessage(false);
-      setTimeout(() => {
-        navigate("/profil/pulpit");
-      }, 4000);
+      if (inputData.password === password2) {
+        await signUp(inputData.email, inputData.password);
+        setMessage(false);
+        setTimeout(() => {
+          navigate("/profil/pulpit");
+        }, 4000);
+      } else {
+        setPasswordError(true);
+        setTimeout(() => {
+          setPasswordError(false);
+        }, 2000);
+      }
     } catch (error) {
       console.log(error);
       setError(true);
@@ -37,8 +47,6 @@ const Registration = () => {
       }, 2000);
     }
   };
-  console.log(inputData);
-
   const handleChange = (e) => {
     setInputData((prevFormData) => {
       return {
@@ -73,18 +81,7 @@ const Registration = () => {
                     required
                   />
                 </span>
-                <span className="flex items-center">
-                  <label className="cursor-pointer mr-2" htmlFor="secondName">
-                    Nazwisko <span className="opacity-0">*</span>
-                  </label>
-                  <input
-                    className="border border-gray-300 py-1  outline-none pl-2 text-sm rounded-sm w-[400px]"
-                    type="text"
-                    id="secondName"
-                    name="secondName"
-                    placeholder="Nowak"
-                  />
-                </span>
+
                 <span className="flex items-center">
                   <label className="cursor-pointer mr-2" htmlFor="email">
                     E-mail <span className="text-red-600">*</span>
@@ -129,6 +126,8 @@ const Registration = () => {
                     type="password"
                     id="pass2"
                     name="password2"
+                    value={password2}
+                    onChange={(e) => setPassword2(e.target.value)}
                   />
                 </span>
                 <span className="flex items-center relative">
@@ -159,6 +158,13 @@ const Registration = () => {
                 </span>
               </div>
               <Error error={error} addStyle={"mr-10"} />
+              {passwordError && (
+                <p
+                  className={`text-red-500 font-semibold  p-2 rounded w-[400px] place-self-end mr-10 `}
+                >
+                  Hasła nie pasują do siebie!
+                </p>
+              )}
               <span className="text-gray-600 text-xs mb-2 place-self-start select-none">
                 <div className="flex items-center">
                   <input type="checkbox" id="remember" name="remember" />

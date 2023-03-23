@@ -1,8 +1,10 @@
 import React from "react";
 import data from "../productsData";
 import { formatCurrencyUppercase } from "../utilities/formatCurrency";
+import { useNavigate } from "react-router";
 
 const OthersLookFor = ({ text }) => {
+  const navigate = useNavigate();
   let shuffled = data
     .slice(0, 5)
     .map((value) => ({ value, sort: Math.random() }))
@@ -19,7 +21,12 @@ const OthersLookFor = ({ text }) => {
       <div className="grid grid-cols-5 gap-x-4 gap-y-6 px-[9%] mb-10 ">
         {shuffled?.map((item) => {
           return (
-            <div className="flex flex-col ">
+            <div
+              className="flex flex-col cursor-pointer"
+              onClick={() => {
+                navigate(`/${item.id}`), window.location.reload(true);
+              }}
+            >
               <img className="mb-3" src={item?.images[0]} alt="" />
               <p className="font-semibold text-sm">{item.model}</p>
               <span className="flex justify-between ">

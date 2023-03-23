@@ -103,7 +103,11 @@ const Navbar = () => {
               className="relative flex flex-col items-center gap-1  hover:text-[#f4811f] cursor-pointer"
             >
               <HiOutlineShoppingBag className="relative" size={26} />
-              <div className="absolute right-[6px] top-[-5px] bg-gray-300 h-[20px] w-[20px] flex justify-center items-center rounded-full text-xs  ">
+              <div
+                className={`absolute right-[6px] top-[-5px] bg-gray-300 h-[20px] w-[20px] flex justify-center items-center rounded-full text-xs ${
+                  isSticky === false ? "-right-[3px] top-[-7px]" : null
+                }`}
+              >
                 {quantityy}
               </div>
               {isSticky ? "KOSZYK" : null}

@@ -54,6 +54,7 @@ const ShoppingCart = () => {
     <>
       <ShoppingCartStatus total={total} />
       <div
+        onClick={() => setToggle(false)}
         className={`absolute top-0 left-0 bg-black/80 w-full h-[226.4vh] z-10 ${
           toggle ? "" : "hidden"
         } `}

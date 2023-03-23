@@ -19,7 +19,7 @@ const ProductSlider = () => {
       {shuffle.map((item) => (
         <div
           onClick={() => {
-            setToggle(false), navigate(`/${item.id}`);
+            navigate(`/${item.id}`), window.location.reload(true);
           }}
           key={item.id}
           className="inline-block"
