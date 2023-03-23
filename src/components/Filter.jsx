@@ -1,3 +1,4 @@
+import { useState } from "react";
 import data from "../productsData";
 
 let uniqueCategory = [
@@ -33,6 +34,9 @@ const countLengthCategory = (param) =>
   );
 
 const Filter = ({ filterResult, filterBrands, cleanResults }) => {
+  const [active, setActive] = useState("");
+  const [activeBrand, setActiveBrand] = useState("");
+
   return (
     <aside className="flex flex-col uppercase border w-[240px] px-4 h-fit ">
       <h2 className="text-center border-b pb-2 mt-2">filtry</h2>
@@ -41,8 +45,12 @@ const Filter = ({ filterResult, filterBrands, cleanResults }) => {
         {uniqueCategory.map((item) => (
           <div key={item.id}>
             <label
-              onClick={() => filterResult(item.category)}
-              className="cursor-pointer ml-2 select-none"
+              onClick={() => {
+                filterResult(item.category), setActive(item.category);
+              }}
+              className={`cursor-pointer ml-2 select-none ${
+                active === item.category && "underline"
+              }`}
               htmlFor={item.category}
             >
               {item.category}
@@ -56,8 +64,12 @@ const Filter = ({ filterResult, filterBrands, cleanResults }) => {
         {sortedArrayBrands.map((item) => (
           <div key={item.id}>
             <label
-              onClick={() => filterBrands(item.brand)}
-              className="cursor-pointer ml-2 select-none"
+              onClick={() => {
+                filterBrands(item.brand), setActiveBrand(item.brand);
+              }}
+              className={`cursor-pointer ml-2 select-none ${
+                activeBrand === item.brand && "underline"
+              }`}
               htmlFor={item.brand}
             >
               {item.brand}
@@ -69,7 +81,10 @@ const Filter = ({ filterResult, filterBrands, cleanResults }) => {
         ))}
       </div>
       <button
-        onClick={() => cleanResults()}
+        onClick={() => {
+          cleanResults(), setActive("");
+          setActiveBrand("");
+        }}
         className="bg-[#f4811f] text-white rounded-sm flex items-center justify-center gap-2 px-6 py-2 text-sm  font-semibold hover:bg-[#c96c1a] uppercase my-6"
       >
         wyczyść

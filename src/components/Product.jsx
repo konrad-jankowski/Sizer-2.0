@@ -5,7 +5,7 @@ import { formatCurrencyUppercase } from "../utilities/formatCurrency";
 const Product = ({ item }) => {
   return (
     <div className="w-[235px] h-[270px]">
-      <Link to={`${item.id}`}>
+      <Link to={`/${item.id}`}>
         <img className="w-[235px] h-[235px]" src={item.images[0]} alt="" />
       </Link>
       <div className="flex justify-between mt-2">

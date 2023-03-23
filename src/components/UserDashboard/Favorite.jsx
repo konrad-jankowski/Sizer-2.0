@@ -13,7 +13,7 @@ const Favorite = () => {
 
   const renderProducts = products?.map((item) => (
     <div className="mt-4 flex flex-col items-center gap-1" key={item.id}>
-      <Link to={`${item.id}`}>
+      <Link to={`/${item.id}`}>
         <img
           className="w-[130px] h-[130px] object-contain cursor-pointer"
           src={item.images[0]}

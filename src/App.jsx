@@ -37,8 +37,6 @@ function App() {
           <Route path="/marki" element={<Brands />} />
           <Route path="/wyprzedaż" element={<Sale />} />
           <Route path={`/:id`} element={<SingleProduct />} />
-          <Route path="/wyprzedaż/:id" element={<SingleProduct />} />
-          <Route path="/profil/schowek/:id" element={<SingleProduct />} />
           <Route path="/koszyk/lista" element={<Cart />} />
         </Routes>
         <Footer />

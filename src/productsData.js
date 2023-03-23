@@ -40,6 +40,12 @@ const shoes = [
       "https://sklep.sizeer.com/media/cache/gallery/rc/xmgweshd/nike-air-max-90-meskie-sneakersy-bialy-dq4071-100_2.jpg",
       "https://sklep.sizeer.com/media/cache/gallery/rc/7f990ivu/nike-air-max-90-meskie-sneakersy-bialy-dq4071-100_4.jpg",
     ],
+    description: [
+      "Szykujesz już w swojej szafie miejsce na nowe sneakersy? Wybierz legendarny model Nike Air Max 90! Jego cholewka wykonana została z wysokiej jakości skór: naturalnej i syntetycznej, by zapewnić trwałą i wygodną konstrukcję wspierającą stopy. Za komfort noszenia odpowiada także miękkie, tekstylne wnętrze i amortyzująca poduszka gazowa Air Sole. Gumowy bieżnik dba natomiast o odpowiedni kontakt buta z podłożem. Biała kolorystyka świetnie ożywi każdą stylówkę.",
+      "Wierzch: skóra naturalna, skóra syntetyczna",
+      "Wyściółka: materiał tekstylny",
+      "Podeszwa: system amortyzacji Air-Sole, tworzywo syntetyczne, guma",
+    ],
   },
   {
     id: "2",
