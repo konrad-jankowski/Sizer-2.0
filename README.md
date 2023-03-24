@@ -10,6 +10,9 @@
 » Tailwind <br>
 » Firebase <br>
 
+<h3>Sample login data:</h3>
+<b>email</b>: jannowak@gmail.com  <b>password</b>: password
+
 <h2>Screenshots of the Project 📸</h2>
 <br>
 <h3 align='center'>Home screen</h3>
