@@ -15,7 +15,7 @@ const SizerClub = () => {
     });
   }, [user?.email]);
 
-  const test = products?.map((item) => item.matkaTeressa);
+  const test = products?.map((item) => item.order);
 
   const yoyo = test?.flatMap((item) => {
     return item?.flat(2).map((item) => {

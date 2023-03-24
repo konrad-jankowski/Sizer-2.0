@@ -25,7 +25,7 @@ const BannerSlider = () => {
     <div className="relative group">
       <div
         onClick={slideDown}
-        className="hidden group-hover:block absolute top-[40%] bg-black/50 cursor-pointer py-4 px-2"
+        className="hidden group-hover:block absolute top-[40%] bg-black/50 cursor-pointer py-4 px-2 z-0"
       >
         <BsChevronLeft size={44} fill="white" />
       </div>

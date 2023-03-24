@@ -108,6 +108,7 @@ const Registration = () => {
                     type="password"
                     id="pass"
                     name="password"
+                    placeholder="********"
                     required
                   />
                   <p
@@ -126,6 +127,7 @@ const Registration = () => {
                     type="password"
                     id="pass2"
                     name="password2"
+                    placeholder="********"
                     value={password2}
                     onChange={(e) => setPassword2(e.target.value)}
                   />

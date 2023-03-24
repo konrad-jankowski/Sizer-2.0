@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useShoppingCart } from "../context/ToggleCardContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -6,7 +5,6 @@ import { formatCurrencyLowercase } from "../utilities/formatCurrency";
 import Button_favorite from "../components/Button_favorite";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { useEffect } from "react";
 
 const Cart = () => {
   const { test, setTest, quantityy, user } = useShoppingCart();
@@ -61,7 +59,25 @@ const Cart = () => {
   };
 
   return (
-    <div className=" min-h-[42.8vh]">
+    <div className=" min-h-[42.8vh] px-[9%] ">
+      <div className="h-[12vh] flex items-center justify-between">
+        {" "}
+        <Link to="/">
+          {" "}
+          <img
+            className="w-[150px] h-[50px] object-cover"
+            src="https://bm-discounts-prd-app-imageautoresize02.azureedge.net/imageautoresize/v2/L2Rpc2NvdW50cy1waWN0dXJlcy84NzFkNWU2ZC0xYjhiLTQzOTYtYjU2OC03ZmQzYzBmOWU1OTIvNTJjNTgyZWMtMjZmMC00YWU5LTljYWItZjcxZTRiNjUwMjRmLnBuZw2/"
+            alt=""
+          />
+        </Link>
+        <ul className="text-[#9f9f9f] font-bold flex gap-6 mt-4">
+          <li className="text-[#444] pb-4  border-b-4 border-[#f4811f] ">
+            1. KOSZYK<span className="opacity-0">k</span>
+          </li>
+          <li>2. DOSTAWA</li>
+          <li>3. PODSUMOWANIE</li>
+        </ul>
+      </div>
       {quantityy > 0 ? (
         <>
           <div className="flex mx-[9%] mb-2 mt-8">

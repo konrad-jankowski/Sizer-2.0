@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Main_grid from "./pages/Main_grid";
 import SingleProduct from "./pages/SingleProduct";
 import ScrollToTop from "./components/ScrollToTop";
@@ -15,31 +15,40 @@ import Orders from "./components/UserDashboard/Orders";
 import Screen from "./components/UserDashboard/Screen";
 import Cart from "./pages/Cart";
 import SizerClub from "./components/UserDashboard/SizerClub";
-import ShoppingCartStatus from "./components/UserDashboard/ShoppingCartStatus";
+
+function Layout() {
+  return (
+    <>
+      {<ShoppingCart />}
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <ScrollToTop />
-        <Navbar />
-        {<ShoppingCart />}
         <Routes>
-          <Route path="/" element={<Main_grid />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/rejestracja" element={<Registration />} />
-          <Route path="/profil" element={<UserDashboard />}>
-            <Route path="pulpit" element={<Screen />} />
-            <Route path="sizerclub" element={<SizerClub />} />
-            <Route path="schowek" element={<Favorite />} />
-            <Route path="zamówienia" element={<Orders />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Main_grid />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/rejestracja" element={<Registration />} />
+            <Route path="/profil" element={<UserDashboard />}>
+              <Route path="pulpit" element={<Screen />} />
+              <Route path="sizerclub" element={<SizerClub />} />
+              <Route path="schowek" element={<Favorite />} />
+              <Route path="zamówienia" element={<Orders />} />
+            </Route>
+            <Route path="/marki" element={<Brands />} />
+            <Route path="/wyprzedaż" element={<Sale />} />
+            <Route path={`/:id`} element={<SingleProduct />} />
           </Route>
-          <Route path="/marki" element={<Brands />} />
-          <Route path="/wyprzedaż" element={<Sale />} />
-          <Route path={`/:id`} element={<SingleProduct />} />
           <Route path="/koszyk/lista" element={<Cart />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
     </>
   );

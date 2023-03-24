@@ -55,12 +55,12 @@ const ShoppingCart = () => {
       <ShoppingCartStatus total={total} />
       <div
         onClick={() => setToggle(false)}
-        className={`absolute top-0 left-0 bg-black/80 w-full h-[226.4vh] z-10 ${
+        className={`absolute top-0 left-0 bg-black/80 w-full h-[245.4vh] z-30 ${
           toggle ? "" : "hidden"
         } `}
       />{" "}
       <aside
-        className={`absolute top-0 right-0 w-[30vw] h-[226.4vh] z-20 bg-white px-5 shadow-lg shadow-[#000000cd] ${
+        className={`absolute top-0 right-0 w-[30vw] h-[245.4vh] z-40 bg-white px-5 shadow-lg shadow-[#000000cd] ${
           toggle ? "sidebar" : "hidden"
         } `}
       >

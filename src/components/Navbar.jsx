@@ -40,8 +40,8 @@ const Navbar = () => {
     <nav
       className={
         isSticky
-          ? "z-10 flex  w-full h-[12vh]  px-[9%] justify-between items-center bg-white "
-          : "sticky top-0 shadow-sm shadow-black/40 z-10 flex  w-full h-[10vh]  px-[9%] justify-between items-center bg-white "
+          ? "z-20 flex w-full h-[12vh]  px-[9%] justify-between items-center bg-white "
+          : "sticky top-0 shadow-sm shadow-black/40 z-20 flex w-full h-[10vh] px-[9%] justify-between items-center bg-white "
       }
     >
       {search ? (
