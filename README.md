@@ -18,6 +18,12 @@
   <img src='https://user-images.githubusercontent.com/115343176/227140244-0445620f-e3b6-489f-aa01-ce82e80cb459.png' width="80%"/>
 </p>
 <br>
+<h3 align='center'>Basket</h3>
+
+<p align="center">
+  <img src='https://user-images.githubusercontent.com/115343176/227500049-d1948d62-59a8-4da2-b94e-2818054a33cc.png' width="80%"/>
+</p>
+<br>
 <h3 align='center'>Product Page</h3>
 
 <p align="center">
